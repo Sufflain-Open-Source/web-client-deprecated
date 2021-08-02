@@ -15,8 +15,20 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'dart:async';
 import 'dart:html';
 
-void main() {
-  querySelector('#root')?.text = 'Your Dart app is running.';
+import 'package:web_client/core/bloc/welcome/welcome_bloc.dart';
+import 'package:web_client/data/implementations/repository.dart';
+import 'package:web_client/ui/components/loading_indicator.dart';
+import 'package:web_client/ui/components/selector.dart';
+import 'package:web_client/ui/pages/welcome_page.dart';
+
+void main() async {
+  final welcomeBloc = WelcomeBloc(Repository.instance);
+  final welcomePage = WelcomePage();
+
+  welcomeBloc.add(WelcomeComponentInit());
+  window.addEventListener('unload', (event) => welcomeBloc.close());
+  welcomePage.listen(welcomeBloc);
 }

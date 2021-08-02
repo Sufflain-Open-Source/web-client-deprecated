@@ -5,3 +5,6 @@
 
 # Conventional directory for build output.
 build/
+
+# Source files
+remote_database_config.dart
