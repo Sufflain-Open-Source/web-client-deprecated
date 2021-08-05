@@ -6,9 +6,9 @@ abstract class WelcomeState {}
 class WelcomeComponentLoading extends WelcomeState {}
 
 class WelcomeComponentLoaded extends WelcomeState {
-  final List<String> groups;
-
   WelcomeComponentLoaded(this.groups);
+  
+  final List<String> groups;
 }
 
 // TODO implement error handling

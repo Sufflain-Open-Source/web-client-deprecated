@@ -11,7 +11,7 @@ void main() {
   final repoMock = MockRepositoryContract();
   final welcomeBloc = WelcomeBloc(repoMock);
 
-  test('initial state should be WelcomeComponentLoading', () {
+  test('initial state should be [WelcomeComponentLoading]', () {
     welcomeBloc.stream.listen((state) {
       expect(state, isA<WelcomeComponentLoading>());
     }).cancel();
@@ -22,7 +22,7 @@ void main() {
         .thenAnswer((invocation) => Future(() => <String>['group1']));
     when(repoMock.groupId).thenReturn('test-group');
 
-    test('should return WelcomeComponentLoaded(groups) on WelcomeComponentLoad',
+    test('should return [WelcomeComponentLoaded(groups)] on [WelcomeComponentLoad]',
         () {
       welcomeBloc.add(WelcomeComponentLoad());
 
@@ -33,7 +33,7 @@ void main() {
     });
 
     test(
-        'should return WelcomeComponentSelected on WelcomeComponentSelect(group)',
+        'should return [WelcomeComponentSelected] on [WelcomeComponentSelect(group)]',
         () {
       welcomeBloc.add(WelcomeComponentSelect('test-group'));
 

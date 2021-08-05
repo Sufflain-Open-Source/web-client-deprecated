@@ -8,9 +8,9 @@ part 'welcome_event.dart';
 part 'welcome_state.dart';
 
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
-  final RepositoryContract repo;
-
   WelcomeBloc(this.repo) : super(WelcomeComponentLoading());
+
+  final RepositoryContract repo;
 
   @override
   Stream<WelcomeState> mapEventToState(

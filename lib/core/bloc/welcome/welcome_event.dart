@@ -8,7 +8,7 @@ class WelcomeComponentInit extends WelcomeEvent {}
 class WelcomeComponentLoad extends WelcomeEvent {}
 
 class WelcomeComponentSelect extends WelcomeEvent {
-  final String groupId;
-
   WelcomeComponentSelect(this.groupId);
+
+  final String groupId;
 }
