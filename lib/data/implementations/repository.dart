@@ -1,3 +1,6 @@
+import 'package:web_client/core/entities/timetable.dart';
+
+import '../models/timetable.dart';
 import '../../core/contracts/local_database_contract.dart';
 import '../../core/contracts/remote_database_contract.dart';
 import '../../core/contracts/repository_contract.dart';
@@ -16,6 +19,13 @@ class Repository implements RepositoryContract {
   late final RemoteDatabaseContract _remoteDatabase;
 
   static Repository get instance => _instance ??= Repository._();
+
+  // @override
+  // Stream<List<TimetableModel>> getTimetablesChangesStream(String groupId) =>
+  //     _remoteDatabase.getTimetablesChangesStream(groupId);
+  @override
+  Future<List<Timetable>> getTimetables(String groupId) =>
+      _remoteDatabase.getTimetables(groupId);
 
   @override
   bool get isGroupSaved => _localDatabase.isGroupSaved;

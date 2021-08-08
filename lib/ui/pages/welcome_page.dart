@@ -43,7 +43,7 @@ class WelcomePage implements PageContract {
 
         if (_groups.isEmpty) {
           placeholder?.innerHtml =
-              makeErrorMessage('loading-error', errorMessageLoadGroups);
+              makeMessage('loading-error', errorMessageLoadGroups);
         } else {
           placeholder?.innerHtml = makeSelector('groups', _groups);
 

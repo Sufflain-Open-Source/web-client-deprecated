@@ -1,6 +1,8 @@
+import '../entities/timetable.dart';
+
 abstract class RepositoryContract {
-  /// Get a list of existing groups from the remote DB.
-  // TODO implement
+  // Stream<List<TimetableModel>> getTimetablesChangesStream(String groupId);
+  Future<List<Timetable>> getTimetables(String groupId);
 
   bool get isGroupSaved;
 

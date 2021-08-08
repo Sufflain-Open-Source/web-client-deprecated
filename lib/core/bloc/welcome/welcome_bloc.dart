@@ -1,8 +1,9 @@
+import '../../contracts/repository_contract.dart';
+
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:web_client/core/contracts/repository_contract.dart';
 
 part 'welcome_event.dart';
 part 'welcome_state.dart';

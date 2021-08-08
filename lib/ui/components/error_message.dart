@@ -1,2 +1,2 @@
-String makeErrorMessage(String id, String message) =>
+String makeMessage(String id, String message) =>
     '<div id="$id">$message</div>';
