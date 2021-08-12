@@ -41,23 +41,22 @@ class RemoteDatabase implements RemoteDatabaseContract {
 
   @override
   Future<List<Timetable>> getTimetables(String groupId) async {
-    final timetablesReference = _realtimeDatabase.ref(config.timetablesNodeName);
+    final timetablesReference = _realtimeDatabase.ref(config.timetablesNodeName).child(groupId);
     final timetablesJson = await timetablesReference
         .once('value')
-        .then(getSnapshotValue) as List<Map<String, dynamic>>;
+        .then((event) => event.snapshot.val()) as Map<String, dynamic>;
+    final timetablesJsonValues = timetablesJson.values.toList();
 
-    return timetablesJson.map((e) => TimetableModel.fromJson(e)).toList();
+    return timetablesJsonValues.map((value) => TimetableModel.fromJson(value)).toList();
   }
 
   @override
   Future<List<String>> getGroups() async {
     final groupsReference = _realtimeDatabase.ref(config.groupsNodeName);
-    final groups = await groupsReference.once('value').then(getSnapshotValue);
+    final groups = await groupsReference.once('value').then((event) => event.snapshot.val());
 
     return groups == null ? <String>[] : List<String>.from(groups);
   }
-
-  Future<dynamic> getSnapshotValue(QueryEvent event) => event.snapshot.val();
 
   /// Get a reference of the timetables for a specific [groupId] and listen for data changes
   // Stream<QueryEvent> _getDataChangesStream(String groupId) =>

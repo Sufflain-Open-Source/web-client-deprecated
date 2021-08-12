@@ -6,6 +6,7 @@ import 'dart:async' as _i3;
 
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:web_client/core/contracts/repository_contract.dart' as _i2;
+import 'package:web_client/core/entities/timetable.dart' as _i4;
 
 // ignore_for_file: comment_references
 // ignore_for_file: unnecessary_parenthesis
@@ -35,6 +36,11 @@ class MockRepositoryContract extends _i1.Mock
   set groupId(String? groupId) =>
       super.noSuchMethod(Invocation.setter(#groupId, groupId),
           returnValueForMissingStub: null);
+  @override
+  _i3.Future<List<_i4.Timetable>> getTimetables(String? groupId) =>
+      (super.noSuchMethod(Invocation.method(#getTimetables, [groupId]),
+              returnValue: Future<List<_i4.Timetable>>.value(<_i4.Timetable>[]))
+          as _i3.Future<List<_i4.Timetable>>);
   @override
   _i3.Future<List<String>> getGroups() =>
       (super.noSuchMethod(Invocation.method(#getGroups, []),

@@ -18,17 +18,26 @@
 import 'dart:async';
 import 'dart:html';
 
+import 'package:web_client/core/bloc/observe_timetables/observe_timetables_bloc.dart';
 import 'package:web_client/core/bloc/welcome/welcome_bloc.dart';
 import 'package:web_client/data/implementations/repository.dart';
+import 'package:web_client/data/util/remote_database.dart';
 import 'package:web_client/ui/components/loading_indicator.dart';
 import 'package:web_client/ui/components/selector.dart';
+import 'package:web_client/ui/pages/main_page.dart';
 import 'package:web_client/ui/pages/welcome_page.dart';
 
 void main() async {
-  final welcomeBloc = WelcomeBloc(Repository.instance);
-  final welcomePage = WelcomePage();
+  // final welcomeBloc = WelcomeBloc(Repository.instance);
+  // final welcomePage = WelcomePage();
 
-  welcomeBloc.add(WelcomeComponentInit());
-  window.addEventListener('unload', (event) => welcomeBloc.close());
-  welcomePage.listen(welcomeBloc);
+  // welcomeBloc.add(WelcomeComponentInit());
+  // window.addEventListener('unload', (event) => welcomeBloc.close());
+  // welcomePage.listen(welcomeBloc);
+
+  final mainBloc = ObserveTimetablesBloc(Repository.instance);
+  final mainPage = MainPage();
+  mainBloc.add(ObserveTimetablesInit());
+  window.addEventListener('unload', (event) => mainBloc.close());
+  mainPage.listen(mainBloc);
 }

@@ -8,7 +8,3 @@ build/
 
 # Source files
 remote_database_config.dart
-
-timetable_page.dart
-list_element_card.dart
-main_page.dart
