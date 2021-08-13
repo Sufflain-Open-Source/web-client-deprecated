@@ -15,23 +15,14 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// import 'dart:async';
-// import 'dart:html';
-// import 'dart:io';
+import 'dart:async';
+import 'dart:html';
 
-// import 'package:web_client/core/bloc/observe_timetables/observe_timetables_bloc.dart';
-// import 'package:web_client/core/bloc/welcome/welcome_bloc.dart';
-// import 'package:web_client/data/implementations/repository.dart';
-// import 'package:web_client/data/util/remote_database.dart';
+import 'package:web_client/core/bloc/observe_timetables/observe_timetables_bloc.dart';
 
-import 'package:web_client/core/entities/lesson.dart';
-import 'package:web_client/core/entities/timetable.dart';
-import 'package:web_client/ui/components/back_button.dart';
-import 'package:web_client/ui/pages/timetable_page.dart';
-// import 'package:web_client/ui/components/loading_indicator.dart';
-// import 'package:web_client/ui/components/selector.dart';
-// import 'package:web_client/ui/pages/main_page.dart';
-// import 'package:web_client/ui/pages/welcome_page.dart';
+import 'package:web_client/data/implementations/repository.dart';
+
+import 'package:web_client/ui/pages/main_page.dart';
 
 void main() async {
   // final welcomeBloc = WelcomeBloc(Repository.instance);
@@ -41,17 +32,9 @@ void main() async {
   // window.addEventListener('unload', (event) => welcomeBloc.close());
   // welcomePage.listen(welcomeBloc);
 
-  // final mainBloc = ObserveTimetablesBloc(Repository.instance);
-  // final mainPage = MainPage();
-  // mainBloc.add(ObserveTimetablesInit());
-  // window.addEventListener('unload', (event) => mainBloc.close());
-  // mainPage.listen(mainBloc);
-  final timetable =
-      Timetable(linkTitle: 'link title', title: 'Title', lessons: [
-    Lesson(time: 'time', data: ['data']),
-    Lesson(time: 'time2', data: ['data2', 'data2', 'data2'])
-  ]);
-
-  final timetablePage = TimetablePage(timetable);
-  timetablePage.render();
+  final mainBloc = ObserveTimetablesBloc(Repository.instance);
+  final mainPage = MainPage();
+  mainBloc.add(ObserveTimetablesInit());
+  window.addEventListener('unload', (event) => mainBloc.close());
+  mainPage.listen(mainBloc);
 }
