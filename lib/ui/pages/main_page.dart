@@ -11,7 +11,9 @@ class MainPage implements PageContract {
   List _timetables = <Timetable>[];
 
   @override
-  void render() {}
+  void render() {
+    document.querySelector('#root')?.innerHtml = makeCards();
+  }
 
   void listen(ObserveTimetablesBloc bloc) {
     bloc.stream.listen((state) {
@@ -22,7 +24,7 @@ class MainPage implements PageContract {
 
       if (state is ObserveTimetablesContentLoaded) {
         _timetables = state.timetables;
-        showCards();
+        render();
         bindCardsClick();
       }
     });
@@ -39,14 +41,13 @@ class MainPage implements PageContract {
     });
   }
 
-  void showCards() {
+  String makeCards() {
     List cards = <String>[];
 
     for (var i = 0; i < _timetables.length; i++) {
       cards.add(card_element.makeCard(i.toString(), _timetables[i].linkTitle));
     }
 
-    final cardsHtml = cards.join();
-    document.querySelector('#root')?.innerHtml = cardsHtml;
+    return cards.join();
   }
 }
