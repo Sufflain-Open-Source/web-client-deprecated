@@ -15,24 +15,29 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-part of 'welcome_bloc.dart';
+import '../../core/bloc/welcome/welcome_bloc.dart';
+import '../../core/contracts/page_contract.dart';
+import 'group_selector_base_page.dart';
 
-@immutable
-abstract class WelcomeState {}
+import 'dart:html';
 
-class WelcomeComponentLoading extends WelcomeState {}
+class SettingsPage extends GroupSelectorBasePage implements PageContract {
+  SettingsPage() {
+    render();
+  }
 
-class WelcomeComponentLoaded extends WelcomeState {
-  WelcomeComponentLoaded(this.groups);
-  
-  final List<String> groups;
-}
+  void listen(WelcomeBloc bloc) {
+    bloc.stream.listen((state) {
+      initiateLoading(state, bloc);
+      showAndBindSelector(state: state, bloc: bloc, firstOptionBlank: false);
+    });
+  }
 
-// TODO implement error handling
-class WelcomeComponentNotLoaded extends WelcomeState {}
+  @override
+  void render() {
+    final root = document.querySelector('#root');
 
-class WelcomeComponentSelected extends WelcomeState {
-  WelcomeComponentSelected(this.groupId);
-
-  final String groupId;
+    root?.innerHtml =
+        '<div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>';
+  }
 }

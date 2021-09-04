@@ -15,14 +15,16 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'dart:async';
 import 'dart:html';
 
 import 'package:web_client/core/bloc/observe_timetables/observe_timetables_bloc.dart';
+import 'package:web_client/core/bloc/welcome/welcome_bloc.dart';
 
 import 'package:web_client/data/implementations/repository.dart';
 
 import 'package:web_client/ui/pages/main_page.dart';
+import 'package:web_client/ui/pages/settings_page.dart';
+import 'package:web_client/ui/pages/welcome_page.dart';
 
 void main() async {
   // final welcomeBloc = WelcomeBloc(Repository.instance);
@@ -37,4 +39,11 @@ void main() async {
   mainBloc.add(ObserveTimetablesInit());
   window.addEventListener('unload', (event) => mainBloc.close());
   mainPage.listen(mainBloc);
+
+  // final welcomeBloc = WelcomeBloc(Repository.instance);
+  // final settingsPage = SettingsPage();
+
+  // welcomeBloc.add(WelcomeComponentInit());
+  // window.addEventListener('unload', (event) => welcomeBloc.close());
+  // settingsPage.listen(welcomeBloc);
 }

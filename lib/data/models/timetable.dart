@@ -25,9 +25,12 @@ class TimetableModel extends Timetable {
   factory TimetableModel.fromJson(Map<String, dynamic> json) {
     final String title = json['title'];
     final String linkTitle = json['linkTitle'];
-    final lessonsJson = List<Map<String, dynamic>>.from(json['lessons']);
-    final lessons =
-        lessonsJson.map((element) => LessonModel.fromJson(element)).toList();
+    final lessonsJson = json.containsKey('lessons')
+        ? List<Map<String, dynamic>>.from(json['lessons'])
+        : [];
+    final lessons = lessonsJson == []
+        ? []
+        : lessonsJson.map((element) => LessonModel.fromJson(element)).toList();
 
     return TimetableModel(title: title, linkTitle: linkTitle, lessons: lessons);
   }

@@ -15,67 +15,35 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'dart:async';
-
-import 'package:web_client/ui/components/error_message.dart';
-
+import 'group_selector_base_page.dart';
 import '../../../core/contracts/page_contract.dart';
 import '../../core/bloc/welcome/welcome_bloc.dart';
 import '../../data/implementations/repository.dart';
-import '../components/loading_indicator.dart';
-import '../components/selector.dart';
 
 import 'dart:html';
 
-class WelcomePage implements PageContract {
+class WelcomePage extends GroupSelectorBasePage implements PageContract {
   WelcomePage() {
     render();
   }
 
   static const titleId = 'title';
   static const noteId = 'note';
-  static const selectorPlaceholderId = 'groupSelectorPlaceholder';
   static const submitButtonId = 'submitButton';
-
   static const title = 'Добро пожаловать! Для начала выберите свою группу.';
   static const note =
       'Это одноразовая процедура. Позднее свой выбор можно изменить в настройках.';
   static const submitButtonText = 'Продолжить';
-  static const errorMessageLoadGroups =
-      'Не удалось загрузить группы. Повторите попытку позже.';
-
-  var _selectedGroup = '';
 
   void listen(WelcomeBloc bloc) {
     bloc.stream.listen((state) {
-      if (state is WelcomeComponentLoading) {
-        document.querySelector('#$selectorPlaceholderId')?.innerHtml =
-            makeLoadingIndicator();
-        bloc.add(WelcomeComponentLoad());
-      }
-
-      if (state is WelcomeComponentLoaded) {
-        final _groups = state.groups;
-        final placeholder = document.querySelector('#$selectorPlaceholderId');
-
-        if (_groups.isEmpty) {
-          placeholder?.innerHtml =
-              makeMessage('loading-error', errorMessageLoadGroups);
-        } else {
-          placeholder?.innerHtml = makeSelector('groups', _groups);
-
-          final selector = document.querySelector('#groups');
-          selector?.addEventListener('change', (event) {
-            _selectedGroup = (selector as SelectElement).value!;
-            bloc.add(WelcomeComponentSelect(_selectedGroup));
-          });
-        }
-      }
+      initiateLoading(state, bloc);
+      showAndBindSelector(state: state, bloc: bloc, firstOptionBlank: true);
 
       if (state is WelcomeComponentSelected) {
         final button = querySelector('#$submitButtonId');
 
-        if (_selectedGroup.trim().isNotEmpty) {
+        if (state.groupId.trim().isNotEmpty) {
           (button as ButtonElement).disabled = false;
         } else {
           (button as ButtonElement).disabled = true;
@@ -93,7 +61,7 @@ class WelcomePage implements PageContract {
     final pageContent = '''
     <h1 id="$titleId">$title</h1>
     <div id="$noteId">$note</div>
-    <div id="$selectorPlaceholderId"></div>
+    <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
     <button id="$submitButtonId" disabled >$submitButtonText</button>
     ''';
 

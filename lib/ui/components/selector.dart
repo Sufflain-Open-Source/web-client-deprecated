@@ -15,11 +15,19 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-String makeSelector(String id, List<String> elements) {
+String makeSelector(
+    {required String id,
+    required List<String> elements,
+    required bool firstOptionBlank}) {
   final optionsList = elements.map(_makeOptionElement);
 
-  return '<select name="$id" id="$id">${_makeOptionElement('')}${optionsList.join()}</select>';
+  return '''<select name="$id" id="$id">
+  ${_makeFirstOption(firstOptionBlank)}${optionsList.join()}
+  </select>''';
 }
+
+String _makeFirstOption(bool firstBlank) =>
+    firstBlank == true ? _makeOptionElement('') : '';
 
 String _makeOptionElement(String value) =>
     '<option value="$value">$value</option>';

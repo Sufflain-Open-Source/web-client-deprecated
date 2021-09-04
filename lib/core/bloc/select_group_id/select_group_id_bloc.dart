@@ -22,29 +22,29 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'welcome_event.dart';
-part 'welcome_state.dart';
+part 'select_group_id_event.dart';
+part 'select_group_id_state.dart';
 
-class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
-  WelcomeBloc(this.repo) : super(WelcomeComponentLoading());
+class SelectGroupIdBloc extends Bloc<SelectGroupIdEvent, SelectGroupIdState> {
+  SelectGroupIdBloc(this.repo) : super(SelectGroupIdComponentLoading());
 
   final RepositoryContract repo;
 
   @override
-  Stream<WelcomeState> mapEventToState(
-    WelcomeEvent event,
+  Stream<SelectGroupIdState> mapEventToState(
+    SelectGroupIdEvent event,
   ) async* {
-    if (event is WelcomeComponentInit) {
-      yield WelcomeComponentLoading();
+    if (event is SelectGroupIdInit) {
+      yield SelectGroupIdComponentLoading();
     }
 
-    if (event is WelcomeComponentLoad) {
-      yield WelcomeComponentLoaded(await repo.getGroups());
+    if (event is SelectGroupIdComponentLoad) {
+      yield SelectGroupIdComponentLoaded(await repo.getGroups());
     }
 
-    if (event is WelcomeComponentSelect) {
+    if (event is SelectGroupIdComponentSelect) {
       repo.groupId = event.groupId;
-      yield WelcomeComponentSelected(event.groupId);
+      yield SelectGroupIdComponentSelected();
     }
   }
 }

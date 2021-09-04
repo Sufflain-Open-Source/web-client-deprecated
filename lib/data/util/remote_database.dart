@@ -62,6 +62,11 @@ class RemoteDatabase implements RemoteDatabaseContract {
     final timetablesJson = await timetablesReference
         .once('value')
         .then((event) => event.snapshot.val()) as Map<String, dynamic>;
+
+    if (timetablesJson.isEmpty) {
+      return [];
+    }
+
     final timetablesJsonValues = timetablesJson.values.toList();
 
     return timetablesJsonValues.map((value) => TimetableModel.fromJson(value)).toList();

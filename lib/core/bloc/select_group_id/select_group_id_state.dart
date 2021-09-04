@@ -15,24 +15,20 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-part of 'welcome_bloc.dart';
+part of 'select_group_id_bloc.dart';
 
 @immutable
-abstract class WelcomeState {}
+abstract class SelectGroupIdState {}
 
-class WelcomeComponentLoading extends WelcomeState {}
+class SelectGroupIdComponentLoading extends SelectGroupIdState {}
 
-class WelcomeComponentLoaded extends WelcomeState {
-  WelcomeComponentLoaded(this.groups);
+class SelectGroupIdComponentLoaded extends SelectGroupIdState {
+  SelectGroupIdComponentLoaded(this.groups);
   
   final List<String> groups;
 }
 
 // TODO implement error handling
-class WelcomeComponentNotLoaded extends WelcomeState {}
+class SelectGroupIdComponentNotLoaded extends SelectGroupIdState {}
 
-class WelcomeComponentSelected extends WelcomeState {
-  WelcomeComponentSelected(this.groupId);
-
-  final String groupId;
-}
+class SelectGroupIdComponentSelected extends SelectGroupIdState {}

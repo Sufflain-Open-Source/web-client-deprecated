@@ -15,8 +15,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:web_client/ui/components/back_button.dart';
-
+import '../components/back_button.dart';
 import '../../core/entities/timetable.dart';
 import '../../core/contracts/page_contract.dart';
 import '../components/table_body_row.dart';

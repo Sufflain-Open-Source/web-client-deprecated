@@ -15,16 +15,15 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'dart:html';
-
-import 'package:web_client/core/bloc/observe_timetables/observe_timetables_bloc.dart';
-import 'package:web_client/ui/components/back_button.dart';
-import 'package:web_client/ui/components/loading_indicator.dart';
-import 'package:web_client/ui/pages/timetable_page.dart';
-
+import '../../core/bloc/observe_timetables/observe_timetables_bloc.dart';
+import '../components/back_button.dart';
+import '../components/loading_indicator.dart';
+import 'timetable_page.dart';
 import '../../core/entities/timetable.dart';
 import '../components/list_element_card.dart' as card_element;
 import '../../core/contracts/page_contract.dart';
+
+import 'dart:html';
 
 class MainPage implements PageContract {
   List _timetables = <Timetable>[];
@@ -43,6 +42,7 @@ class MainPage implements PageContract {
 
       if (state is ObserveTimetablesContentLoaded) {
         _timetables = state.timetables;
+        
         render();
         bindCardsClick();
       }
