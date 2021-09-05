@@ -18,14 +18,15 @@
 import 'group_selector_base_page.dart';
 import '../../../core/contracts/page_contract.dart';
 import '../../core/bloc/welcome/welcome_bloc.dart';
-import '../../data/implementations/repository.dart';
 
 import 'dart:html';
 
 class WelcomePage extends GroupSelectorBasePage implements PageContract {
-  WelcomePage() {
+  WelcomePage(this.onSubmitButtonClick) {
     render();
   }
+
+  final Function onSubmitButtonClick;
 
   static const titleId = 'title';
   static const noteId = 'note';
@@ -49,8 +50,9 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
           (button as ButtonElement).disabled = true;
         }
 
-        button.addEventListener(
-            'click', (event) => print(Repository.instance.groupId));
+        button.addEventListener('click', (event) {
+          onSubmitButtonClick();
+        });
       }
     });
   }

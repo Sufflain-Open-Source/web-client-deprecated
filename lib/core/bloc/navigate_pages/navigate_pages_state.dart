@@ -15,20 +15,22 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import '../../core/contracts/local_database_contract.dart';
+part of 'navigate_pages_bloc.dart';
 
-import 'dart:html';
+abstract class NavigatePagesState {}
 
-class LocalDatabase implements LocalDatabaseContract {
-  static const _groupIdKey = 'groupId';
-  final Storage _storage = window.localStorage;
+class NavigatePagesInitial extends NavigatePagesState {}
 
-  @override
-  bool get isGroupSaved => _storage.containsKey(_groupIdKey) && _storage[_groupIdKey] != '';
+class NavBarSwitchesBinded extends NavigatePagesState {}
 
-  @override
-  String get groupId => _storage[_groupIdKey] ?? '';
+class GroupIdPresenceChecked extends NavigatePagesState {
+  GroupIdPresenceChecked(this.isGroupStoredLocally);
 
-  @override
-  set groupId(String gid) => _storage[_groupIdKey] = gid;
+  final bool isGroupStoredLocally;
 }
+
+class WelcomePageLaunched extends NavigatePagesState {}
+
+class MainPageLaunched extends NavigatePagesState {}
+
+class SettingsPageLaunched extends NavigatePagesState {}
