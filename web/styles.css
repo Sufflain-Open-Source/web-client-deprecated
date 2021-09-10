@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto); */
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 
 html, body {
   width: 100%;
@@ -15,8 +16,61 @@ html, body {
 
 input[type="radio"] {
   visibility: hidden;
+  position: fixed;
 }
 
-nav {
+input[type="radio"]:checked+label {
+  border-bottom: solid #84CFFF;
+}
+
+label {
+  padding-bottom: 3px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+nav:not([hidden=""]) {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px; /*7vh*/
+  align-content: center;
+  justify-content: space-between;
+  color: #C6F5FE;
   background-color: #FE4466;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -3px 6px #00000029;
+}
+
+#main-page-switch {
+  margin: auto auto auto 74px; /*4vh*/
+}
+
+#main-page-switch :hover {
+  cursor: pointer;
+}
+
+#settings-page-switch {
+  margin: auto 74px auto auto;
+}
+
+#settings-page-switch :hover {
+  cursor: pointer;
+}
+
+#back-button {
+  margin: auto auto auto 30px;
+}
+
+#back-button :not([style*="hidden"]) {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 20px;
+}
+
+#back-button :hover {
+  cursor: pointer;
 }

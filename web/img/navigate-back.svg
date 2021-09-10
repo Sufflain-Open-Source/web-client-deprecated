@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="86.5" height="40" viewBox="0 0 86.5 40">
+  <g id="navigate-back" transform="translate(-378 -349)">
+    <line id="line" data-name="Line" x2="64.961" transform="translate(394.539 369.5)" fill="none" stroke="#c6f5fe" stroke-linecap="round" stroke-width="10"/>
+    <path id="triangle" data-name="Triangle" d="M20,0,40,33H0Z" transform="translate(378 389) rotate(-90)" fill="#c6f5fe"/>
+  </g>
+</svg>
