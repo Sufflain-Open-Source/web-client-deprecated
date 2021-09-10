@@ -1,12 +1,25 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto); */
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 
+:root {
+  --light-red: #fe8599;
+  --medium-red: #fe4466;
+  --dark-red: #773c62;
+  --light-blue: #eafeff;
+  --medium-blue: #c6f5fe;
+  --dark-blue: #84cfff;
+}
+
 html, body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #C6F5FE;
 }
 
 #output {
@@ -20,7 +33,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked+label {
-  border-bottom: solid #84CFFF;
+  border-bottom: solid var(--dark-blue);
 }
 
 label {
@@ -38,8 +51,8 @@ nav:not([hidden=""]) {
   height: 50px; /*7vh*/
   align-content: center;
   justify-content: space-between;
-  color: #C6F5FE;
-  background-color: #FE4466;
+  color: var(--medium-blue);
+  background-color: var(--medium-red);
   border-radius: 18px 18px 0 0;
   box-shadow: 0 -3px 6px #00000029;
 }
@@ -73,4 +86,36 @@ nav:not([hidden=""]) {
 
 #back-button :hover {
   cursor: pointer;
+}
+
+/*################
+  # Welcome page #
+  ################*/
+
+button {
+  border: none;
+}
+
+#submitButton {
+  background-color: var(--medium-red);
+  width: 98px;
+  height: 40px;
+  border-radius: 10px;
+  color: var(--medium-blue);
+  transition: background-color 300ms, transform 100ms, shadow 100ms;
+}
+
+#submitButton:not(:disabled):hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 3px 6px #00000029;
+}
+
+#submitButton:active {
+  background-color: var(--dark-red);
+}
+
+#submitButton:disabled {
+  background-color: var(--light-red);
+  cursor: default;
 }
