@@ -1,0 +1,24 @@
+define(['dart_sdk'], (function load__packages__web_client__ui__components__error_message(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var error_message = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  error_message.makeMessage = function makeMessage(id, message) {
+    return "<div id=\"" + id + "\">" + message + "</div>";
+  };
+  dart.trackLibraries("packages/web_client/ui/components/error_message", {
+    "package:web_client/ui/components/error_message.dart": error_message
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["error_message.dart"],"names":[],"mappings":";;;;;;;;;;mDAiB0B,IAAW;AACjC,UAAA,AAA8B,gBAAnB,EAAE,WAAG,OAAO;EAAO","file":"error_message.sound.ddc.js"}');
+  // Exports:
+  return {
+    ui__components__error_message: error_message
+  };
+}));
+
+//# sourceMappingURL=error_message.sound.ddc.js.map

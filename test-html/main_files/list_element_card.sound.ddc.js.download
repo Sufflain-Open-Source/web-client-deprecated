@@ -1,0 +1,32 @@
+define(['dart_sdk'], (function load__packages__web_client__ui__components__list_element_card(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var list_element_card = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  list_element_card.makeCard = function makeCard(id, title) {
+    return "    <div id=\"" + id + "\" class=\"" + "card" + "\">\n      <p class=\"" + "card-title" + "\">" + title + "</p>\n    </div>\n    ";
+  };
+  dart.defineLazy(list_element_card, {
+    /*list_element_card.cardClassName*/get cardClassName() {
+      return "card";
+    },
+    /*list_element_card.cardTitleClassName*/get cardTitleClassName() {
+      return "card-title";
+    }
+  }, false);
+  dart.trackLibraries("packages/web_client/ui/components/list_element_card", {
+    "package:web_client/ui/components/list_element_card.dart": list_element_card
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["list_element_card.dart"],"names":[],"mappings":";;;;;;;;;;iDAoBuB,IAAW;AAChC,UAAO,AAIF,oBAHO,EAAE,4BAAuB,0CACJ,QAAG,KAAK;EAG3C;;MATM,+BAAa;;;MACb,oCAAkB","file":"list_element_card.sound.ddc.js"}');
+  // Exports:
+  return {
+    ui__components__list_element_card: list_element_card
+  };
+}));
+
+//# sourceMappingURL=list_element_card.sound.ddc.js.map

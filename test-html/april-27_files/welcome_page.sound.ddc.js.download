@@ -1,0 +1,105 @@
+define(['dart_sdk', 'packages/web_client/core/bloc/welcome/welcome_bloc', 'packages/web_client/ui/pages/group_selector_base_page', 'packages/web_client/core/contracts/page_contract'], (function load__packages__web_client__ui__pages__welcome_page(dart_sdk, packages__web_client__core__bloc__welcome__welcome_bloc, packages__web_client__ui__pages__group_selector_base_page, packages__web_client__core__contracts__page_contract) {
+  'use strict';
+  const core = dart_sdk.core;
+  const html = dart_sdk.html;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const welcome_bloc = packages__web_client__core__bloc__welcome__welcome_bloc.core__bloc__welcome__welcome_bloc;
+  const group_selector_base_page = packages__web_client__ui__pages__group_selector_base_page.ui__pages__group_selector_base_page;
+  const page_contract = packages__web_client__core__contracts__page_contract.core__contracts__page_contract;
+  var welcome_page = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  var $trim = dartx.trim;
+  var $disabled = dartx.disabled;
+  var $addEventListener = dartx.addEventListener;
+  var $innerHtml = dartx.innerHtml;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    EventToNull: () => (T.EventToNull = dart.constFn(dart.fnType(core.Null, [html.Event])))(),
+    WelcomeStateTovoid: () => (T.WelcomeStateTovoid = dart.constFn(dart.fnType(dart.void, [welcome_bloc.WelcomeState])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:web_client/ui/pages/welcome_page.dart"];
+  var onSubmitButtonClick$ = dart.privateName(welcome_page, "WelcomePage.onSubmitButtonClick");
+  welcome_page.WelcomePage = class WelcomePage extends group_selector_base_page.GroupSelectorBasePage {
+    get onSubmitButtonClick() {
+      return this[onSubmitButtonClick$];
+    }
+    set onSubmitButtonClick(value) {
+      super.onSubmitButtonClick = value;
+    }
+    listen(bloc) {
+      bloc.stream.listen(dart.fn(state => {
+        this.initiateLoading(state, bloc);
+        this.showAndBindSelector({state: state, bloc: bloc, firstOptionBlank: true});
+        if (welcome_bloc.WelcomeComponentSelected.is(state)) {
+          let button = html.querySelector("#" + "submitButton");
+          if (state.groupId[$trim]()[$isNotEmpty]) {
+            html.ButtonElement.as(button)[$disabled] = false;
+          } else {
+            html.ButtonElement.as(button)[$disabled] = true;
+          }
+          button[$addEventListener]("click", dart.fn(event => {
+            dart.dsend(this, 'onSubmitButtonClick', []);
+          }, T.EventToNull()));
+        }
+      }, T.WelcomeStateTovoid()));
+    }
+    render() {
+      let t0;
+      let rootElement = html.document.querySelector("#root");
+      let pageContent = "    <h1 id=\"" + "title" + "\">" + "Выберите группу." + "</h1>\n    <div id=\"" + "note" + "\">" + welcome_page.WelcomePage.note + "</div>\n    <div id=\"" + "groupSelectorPlaceholder" + "\"></div>\n    <button id=\"" + "submitButton" + "\" disabled >" + "Продолжить" + "</button>\n    ";
+      t0 = rootElement;
+      t0 == null ? null : t0[$innerHtml] = pageContent;
+    }
+  };
+  (welcome_page.WelcomePage.new = function(onSubmitButtonClick) {
+    this[onSubmitButtonClick$] = onSubmitButtonClick;
+    this.render();
+  }).prototype = welcome_page.WelcomePage.prototype;
+  dart.addTypeTests(welcome_page.WelcomePage);
+  dart.addTypeCaches(welcome_page.WelcomePage);
+  welcome_page.WelcomePage[dart.implements] = () => [page_contract.PageContract];
+  dart.setMethodSignature(welcome_page.WelcomePage, () => ({
+    __proto__: dart.getMethods(welcome_page.WelcomePage.__proto__),
+    listen: dart.fnType(dart.void, [welcome_bloc.WelcomeBloc]),
+    render: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(welcome_page.WelcomePage, I[0]);
+  dart.setFieldSignature(welcome_page.WelcomePage, () => ({
+    __proto__: dart.getFields(welcome_page.WelcomePage.__proto__),
+    onSubmitButtonClick: dart.finalFieldType(core.Function)
+  }));
+  dart.defineLazy(welcome_page.WelcomePage, {
+    /*welcome_page.WelcomePage.titleId*/get titleId() {
+      return "title";
+    },
+    /*welcome_page.WelcomePage.noteId*/get noteId() {
+      return "note";
+    },
+    /*welcome_page.WelcomePage.submitButtonId*/get submitButtonId() {
+      return "submitButton";
+    },
+    /*welcome_page.WelcomePage.title*/get title() {
+      return "Выберите группу.";
+    },
+    /*welcome_page.WelcomePage.note*/get note() {
+      return "Позднее свой выбор можно изменить в настройках.";
+    },
+    /*welcome_page.WelcomePage.submitButtonText*/get submitButtonText() {
+      return "Продолжить";
+    }
+  }, false);
+  dart.trackLibraries("packages/web_client/ui/pages/welcome_page", {
+    "package:web_client/ui/pages/welcome_page.dart": welcome_page
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["welcome_page.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;IA4BiB;;;;;;WASS;AAkBpB,MAjBF,AAAK,AAAO,IAAR,eAAe,QAAC;AACU,QAA5B,qBAAgB,KAAK,EAAE,IAAI;AAC0C,QAArE,iCAA2B,KAAK,QAAQ,IAAI,oBAAoB;AAEhE,YAAU,yCAAN,KAAK;AACD,uBAAS,mBAAc,AAAkB;AAE/C,cAAI,AAAM,AAAQ,AAAO,KAAhB;AACmC,YAAlC,AAAkB,sBAAzB,MAAM,eAA8B;;AAEI,YAAjC,AAAkB,sBAAzB,MAAM,eAA8B;;AAKrC,UAFF,AAAO,MAAD,oBAAkB,SAAS,QAAC;AACX,YAAF,WAAnB;;;;IAIR;;;AAIQ,wBAAc,AAAS,4BAAc;AACrC,wBAAc,AAKjB,4BAJa,6BAAQ,mCACR,QAAG,gCAAI,wDACgC,kDAC5B,iCAA6B;AAGpB,WAApC,WAAW;mBAAX,OAAa,iBAAY,WAAW;IACtC;;;IA7CiB;AACP,IAAR;EACF;;;;;;;;;;;;;;;MAIa,gCAAO;;;MACP,+BAAM;;;MACN,uCAAc;;;MACd,8BAAK;;;MACL,6BAAI;;;MACJ,yCAAgB","file":"welcome_page.sound.ddc.js"}');
+  // Exports:
+  return {
+    ui__pages__welcome_page: welcome_page
+  };
+}));
+
+//# sourceMappingURL=welcome_page.sound.ddc.js.map

@@ -1,0 +1,104 @@
+define(['dart_sdk', 'packages/firebase/firebase', 'packages/web_client/remote_database_config', 'packages/firebase/src/app', 'packages/web_client/core/entities/timetable', 'packages/web_client/data/models/timetable', 'packages/web_client/core/contracts/remote_database_contract'], (function load__packages__web_client__data__util__remote_database(dart_sdk, packages__firebase__firebase, packages__web_client__remote_database_config, packages__firebase__src__app, packages__web_client__core__entities__timetable, packages__web_client__data__models__timetable, packages__web_client__core__contracts__remote_database_contract) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _internal = dart_sdk._internal;
+  const _interceptors = dart_sdk._interceptors;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const top_level = packages__firebase__firebase.src__top_level;
+  const remote_database_config = packages__web_client__remote_database_config.remote_database_config;
+  const database = packages__firebase__src__app.src__database;
+  const timetable = packages__web_client__core__entities__timetable.core__entities__timetable;
+  const timetable$ = packages__web_client__data__models__timetable.data__models__timetable;
+  const remote_database_contract = packages__web_client__core__contracts__remote_database_contract.core__contracts__remote_database_contract;
+  var remote_database = Object.create(dart.library);
+  var $isEmpty = dartx.isEmpty;
+  var $values = dartx.values;
+  var $toList = dartx.toList;
+  var $map = dartx.map;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    QueryEventTodynamic: () => (T.QueryEventTodynamic = dart.constFn(dart.fnType(dart.dynamic, [database.QueryEvent])))(),
+    MapOfString$dynamic: () => (T.MapOfString$dynamic = dart.constFn(core.Map$(core.String, dart.dynamic)))(),
+    JSArrayOfTimetable: () => (T.JSArrayOfTimetable = dart.constFn(_interceptors.JSArray$(timetable.Timetable)))(),
+    dynamicToTimetableModel: () => (T.dynamicToTimetableModel = dart.constFn(dart.fnType(timetable$.TimetableModel, [dart.dynamic])))(),
+    ListOfTimetable: () => (T.ListOfTimetable = dart.constFn(core.List$(timetable.Timetable)))(),
+    JSArrayOfString: () => (T.JSArrayOfString = dart.constFn(_interceptors.JSArray$(core.String)))(),
+    ListOfString: () => (T.ListOfString = dart.constFn(core.List$(core.String)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:web_client/data/util/remote_database.dart"];
+  var __RemoteDatabase__realtimeDatabase = dart.privateName(remote_database, "_#RemoteDatabase#_realtimeDatabase");
+  var _realtimeDatabase = dart.privateName(remote_database, "_realtimeDatabase");
+  remote_database.RemoteDatabase = class RemoteDatabase extends core.Object {
+    get [_realtimeDatabase]() {
+      let t0;
+      t0 = this[__RemoteDatabase__realtimeDatabase];
+      return t0 == null ? dart.throw(new _internal.LateError.fieldNI("_realtimeDatabase")) : t0;
+    }
+    set [_realtimeDatabase](t0) {
+      if (this[__RemoteDatabase__realtimeDatabase] == null)
+        this[__RemoteDatabase__realtimeDatabase] = t0;
+      else
+        dart.throw(new _internal.LateError.fieldAI("_realtimeDatabase"));
+    }
+    getTimetables(groupId) {
+      return async.async(T.ListOfTimetable(), (function* getTimetables() {
+        let timetablesReference = this[_realtimeDatabase].ref("t").child(groupId);
+        let timetablesJson = T.MapOfString$dynamic().as(yield timetablesReference.once("value").then(dart.dynamic, dart.fn(event => event.snapshot.val(), T.QueryEventTodynamic())));
+        if (timetablesJson[$isEmpty]) {
+          return T.JSArrayOfTimetable().of([]);
+        }
+        let timetablesJsonValues = timetablesJson[$values][$toList]();
+        return timetablesJsonValues[$map](timetable$.TimetableModel, dart.fn(value => timetable$.TimetableModel.fromJson(T.MapOfString$dynamic().as(value)), T.dynamicToTimetableModel()))[$toList]();
+      }).bind(this));
+    }
+    getGroups() {
+      return async.async(T.ListOfString(), (function* getGroups() {
+        let groupsReference = this[_realtimeDatabase].ref("g");
+        let groups = (yield groupsReference.once("value").then(dart.dynamic, dart.fn(event => event.snapshot.val(), T.QueryEventTodynamic())));
+        return groups == null ? T.JSArrayOfString().of([]) : T.ListOfString().from(core.Iterable.as(groups));
+      }).bind(this));
+    }
+  };
+  (remote_database.RemoteDatabase.new = function(db = null) {
+    let t0;
+    this[__RemoteDatabase__realtimeDatabase] = null;
+    top_level.initializeApp({apiKey: remote_database_config.apiKey, authDomain: "sufflain-app.firebaseapp.com", databaseURL: remote_database_config.databaseURL, projectId: "sufflain-app", storageBucket: "sufflain-app.appspot.com"});
+    this[_realtimeDatabase] = (t0 = db, t0 == null ? top_level.database() : t0);
+  }).prototype = remote_database.RemoteDatabase.prototype;
+  dart.addTypeTests(remote_database.RemoteDatabase);
+  dart.addTypeCaches(remote_database.RemoteDatabase);
+  remote_database.RemoteDatabase[dart.implements] = () => [remote_database_contract.RemoteDatabaseContract];
+  dart.setMethodSignature(remote_database.RemoteDatabase, () => ({
+    __proto__: dart.getMethods(remote_database.RemoteDatabase.__proto__),
+    getTimetables: dart.fnType(async.Future$(core.List$(timetable.Timetable)), [core.String]),
+    getGroups: dart.fnType(async.Future$(core.List$(core.String)), [])
+  }));
+  dart.setGetterSignature(remote_database.RemoteDatabase, () => ({
+    __proto__: dart.getGetters(remote_database.RemoteDatabase.__proto__),
+    [_realtimeDatabase]: database.Database
+  }));
+  dart.setSetterSignature(remote_database.RemoteDatabase, () => ({
+    __proto__: dart.getSetters(remote_database.RemoteDatabase.__proto__),
+    [_realtimeDatabase]: database.Database
+  }));
+  dart.setLibraryUri(remote_database.RemoteDatabase, I[0]);
+  dart.setFieldSignature(remote_database.RemoteDatabase, () => ({
+    __proto__: dart.getFields(remote_database.RemoteDatabase.__proto__),
+    [__RemoteDatabase__realtimeDatabase]: dart.fieldType(dart.nullable(database.Database))
+  }));
+  dart.trackLibraries("packages/web_client/data/util/remote_database", {
+    "package:web_client/data/util/remote_database.dart": remote_database
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["remote_database.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAsCsB;;IAAiB;;AAAjB;;;;IAAiB;kBAqBQ;AAAR;AAC7B,kCAAsB,AAAkB,AAA+B,uCAAM,OAAO;AACpF,6BAEqC,2BAFpB,MAAM,AACxB,AACA,mBAF2C,MACtC,4BACA,QAAC,SAAU,AAAM,AAAS,KAAV;AAE1B,YAAI,AAAe,cAAD;AAChB,gBAAO;;AAGH,mCAAuB,AAAe,AAAO,cAAR;AAE3C,cAAO,AAAqB,AAA+C,qBAAhD,kCAAK,QAAC,SAAyB,8DAAS,KAAK;MAC1E;;;AAG8B;AACtB,8BAAkB,AAAkB;AACpC,sBAAS,MAAM,AAAgB,AAAc,eAAf,MAAM,4BAAc,QAAC,SAAU,AAAM,AAAS,KAAV;AAExE,cAAO,AAAO,OAAD,WAAmB,6BAAK,uCAAkB,MAAM;MAC/D;;;iDArD0B;;+CAWN;AALsB,IALxC,iCACmB,wFAEK;AAIY,IAApC,2BAAuB,KAAH,EAAE,EAAF,aAAM;EAC5B","file":"remote_database.sound.ddc.js"}');
+  // Exports:
+  return {
+    data__util__remote_database: remote_database
+  };
+}));
+
+//# sourceMappingURL=remote_database.sound.ddc.js.map

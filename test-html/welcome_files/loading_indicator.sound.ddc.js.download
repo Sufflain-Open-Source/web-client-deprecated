@@ -1,0 +1,24 @@
+define(['dart_sdk'], (function load__packages__web_client__ui__components__loading_indicator(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var loading_indicator = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  loading_indicator.makeLoadingIndicator = function makeLoadingIndicator() {
+    return "<div class=\"loading-indicator\">Loading...</div>";
+  };
+  dart.trackLibraries("packages/web_client/ui/components/loading_indicator", {
+    "package:web_client/ui/components/loading_indicator.dart": loading_indicator
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["loading_indicator.dart"],"names":[],"mappings":";;;;;;;;;;;AAmBE,UAAO;EACT","file":"loading_indicator.sound.ddc.js"}');
+  // Exports:
+  return {
+    ui__components__loading_indicator: loading_indicator
+  };
+}));
+
+//# sourceMappingURL=loading_indicator.sound.ddc.js.map

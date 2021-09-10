@@ -1,0 +1,50 @@
+define(['dart_sdk'], (function load__packages__web_client__ui__components__back_button(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const html = dart_sdk.html;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var back_button = Object.create(dart.library);
+  var $querySelectorAll = dartx.querySelectorAll;
+  var $hidden = dartx.hidden;
+  var $forEach = dartx.forEach;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    ElementTovoid: () => (T.ElementTovoid = dart.constFn(dart.fnType(dart.void, [html.Element])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  back_button.showBackButton = function showBackButton() {
+    back_button._toggleHeaderElementsVisibility({shouldHideBackButton: false});
+  };
+  back_button.hideBackButton = function hideBackButton() {
+    back_button._toggleHeaderElementsVisibility({shouldHideBackButton: true});
+  };
+  back_button._toggleHeaderElementsVisibility = function _toggleHeaderElementsVisibility(opts) {
+    let t0;
+    let shouldHideBackButton = opts && 'shouldHideBackButton' in opts ? opts.shouldHideBackButton : null;
+    let headerElementsWithoutButton = html.document[$querySelectorAll](html.Element, "header > :not(#back-button)");
+    let backButton = html.document.querySelector("#back-button");
+    headerElementsWithoutButton[$forEach](dart.fn(element => {
+      element[$hidden] = shouldHideBackButton === true ? false : true;
+    }, T.ElementTovoid()));
+    t0 = backButton;
+    t0 == null ? null : t0[$hidden] = shouldHideBackButton === true ? true : false;
+  };
+  dart.defineLazy(back_button, {
+    /*back_button.backButtonId*/get backButtonId() {
+      return "back-button";
+    }
+  }, false);
+  dart.trackLibraries("packages/web_client/ui/components/back_button", {
+    "package:web_client/ui/components/back_button.dart": back_button
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["back_button.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;AAuB8D,IAA5D,mEAAsD;EACxD;;AAI6D,IAA3D,mEAAsD;EACxD;;;QAEoD;AAC5C,sCACF,AAAS,+CAAiB;AACxB,qBAAa,AAAS,4BAAc;AAIxC,IAFF,AAA4B,2BAAD,WAAS,QAAC;AACyB,MAA5D,AAAQ,OAAD,YAAU,AAAqB,oBAAD,KAAI,OAAO,QAAQ;;AAGM,SAAhE,UAAU;iBAAV,OAAY,cAAS,AAAqB,oBAAD,KAAI,OAAO,OAAO;EAC7D;;MAtBM,wBAAY","file":"back_button.sound.ddc.js"}');
+  // Exports:
+  return {
+    ui__components__back_button: back_button
+  };
+}));
+
+//# sourceMappingURL=back_button.sound.ddc.js.map

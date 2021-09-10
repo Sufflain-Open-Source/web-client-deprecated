@@ -1,0 +1,188 @@
+define(['dart_sdk', 'packages/web_client/data/implementations/repository', 'packages/bloc/bloc'], (function load__packages__web_client__core__bloc__navigate_pages__navigate_pages_bloc(dart_sdk, packages__web_client__data__implementations__repository, packages__bloc__bloc) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const repository = packages__web_client__data__implementations__repository.data__implementations__repository;
+  const bloc = packages__bloc__bloc.src__bloc;
+  var navigate_pages_bloc = Object.create(dart.library);
+  var $isNotEmpty = dartx.isNotEmpty;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    _AsyncStarImplOfNavigatePagesState: () => (T._AsyncStarImplOfNavigatePagesState = dart.constFn(async._AsyncStarImpl$(navigate_pages_bloc.NavigatePagesState)))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:web_client/core/bloc/navigate_pages/navigate_pages_bloc.dart"];
+  navigate_pages_bloc.NavigatePagesEvent = class NavigatePagesEvent extends core.Object {};
+  (navigate_pages_bloc.NavigatePagesEvent.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.NavigatePagesEvent.prototype;
+  dart.addTypeTests(navigate_pages_bloc.NavigatePagesEvent);
+  dart.addTypeCaches(navigate_pages_bloc.NavigatePagesEvent);
+  dart.setLibraryUri(navigate_pages_bloc.NavigatePagesEvent, I[0]);
+  navigate_pages_bloc.NavigatePagesState = class NavigatePagesState extends core.Object {};
+  (navigate_pages_bloc.NavigatePagesState.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.NavigatePagesState.prototype;
+  dart.addTypeTests(navigate_pages_bloc.NavigatePagesState);
+  dart.addTypeCaches(navigate_pages_bloc.NavigatePagesState);
+  dart.setLibraryUri(navigate_pages_bloc.NavigatePagesState, I[0]);
+  navigate_pages_bloc.NavigatePagesBloc = class NavigatePagesBloc extends bloc.Bloc$(navigate_pages_bloc.NavigatePagesEvent, navigate_pages_bloc.NavigatePagesState) {
+    mapEventToState(event) {
+      navigate_pages_bloc.NavigatePagesEvent.as(event);
+      return new (T._AsyncStarImplOfNavigatePagesState()).new(function* mapEventToState(stream) {
+        if (navigate_pages_bloc.Init.is(event)) {
+          if (stream.add(new navigate_pages_bloc.NavigatePagesInitial.new())) return;
+          yield;
+        }
+        if (navigate_pages_bloc.BindNavBarSwitchesToPages.is(event)) {
+          if (stream.add(new navigate_pages_bloc.NavBarSwitchesBinded.new())) return;
+          yield;
+        }
+        if (navigate_pages_bloc.CheckGroupIdPresence.is(event)) {
+          let repo = repository.Repository.instance;
+          let isGroupStored = false;
+          if (repo.isGroupSaved && repo.groupId[$isNotEmpty]) {
+            isGroupStored = true;
+          }
+          if (stream.add(new navigate_pages_bloc.GroupIdPresenceChecked.new(isGroupStored))) return;
+          yield;
+        }
+        if (navigate_pages_bloc.LaunchWelcomePage.is(event)) {
+          if (stream.add(new navigate_pages_bloc.WelcomePageLaunched.new())) return;
+          yield;
+        }
+        if (navigate_pages_bloc.LaunchMainPage.is(event)) {
+          if (stream.add(new navigate_pages_bloc.MainPageLaunched.new())) return;
+          yield;
+        }
+        if (navigate_pages_bloc.LaunchSettingsPage.is(event)) {
+          if (stream.add(new navigate_pages_bloc.SettingsPageLaunched.new())) return;
+          yield;
+        }
+      }).stream;
+    }
+  };
+  (navigate_pages_bloc.NavigatePagesBloc.new = function() {
+    navigate_pages_bloc.NavigatePagesBloc.__proto__.new.call(this, new navigate_pages_bloc.NavigatePagesInitial.new());
+    ;
+  }).prototype = navigate_pages_bloc.NavigatePagesBloc.prototype;
+  dart.addTypeTests(navigate_pages_bloc.NavigatePagesBloc);
+  dart.addTypeCaches(navigate_pages_bloc.NavigatePagesBloc);
+  dart.setMethodSignature(navigate_pages_bloc.NavigatePagesBloc, () => ({
+    __proto__: dart.getMethods(navigate_pages_bloc.NavigatePagesBloc.__proto__),
+    mapEventToState: dart.fnType(async.Stream$(navigate_pages_bloc.NavigatePagesState), [dart.nullable(core.Object)])
+  }));
+  dart.setLibraryUri(navigate_pages_bloc.NavigatePagesBloc, I[0]);
+  navigate_pages_bloc.Init = class Init extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.Init.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.Init.prototype;
+  dart.addTypeTests(navigate_pages_bloc.Init);
+  dart.addTypeCaches(navigate_pages_bloc.Init);
+  dart.setLibraryUri(navigate_pages_bloc.Init, I[0]);
+  navigate_pages_bloc.BindNavBarSwitchesToPages = class BindNavBarSwitchesToPages extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.BindNavBarSwitchesToPages.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.BindNavBarSwitchesToPages.prototype;
+  dart.addTypeTests(navigate_pages_bloc.BindNavBarSwitchesToPages);
+  dart.addTypeCaches(navigate_pages_bloc.BindNavBarSwitchesToPages);
+  dart.setLibraryUri(navigate_pages_bloc.BindNavBarSwitchesToPages, I[0]);
+  navigate_pages_bloc.CheckGroupIdPresence = class CheckGroupIdPresence extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.CheckGroupIdPresence.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.CheckGroupIdPresence.prototype;
+  dart.addTypeTests(navigate_pages_bloc.CheckGroupIdPresence);
+  dart.addTypeCaches(navigate_pages_bloc.CheckGroupIdPresence);
+  dart.setLibraryUri(navigate_pages_bloc.CheckGroupIdPresence, I[0]);
+  navigate_pages_bloc.LaunchWelcomePage = class LaunchWelcomePage extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.LaunchWelcomePage.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.LaunchWelcomePage.prototype;
+  dart.addTypeTests(navigate_pages_bloc.LaunchWelcomePage);
+  dart.addTypeCaches(navigate_pages_bloc.LaunchWelcomePage);
+  dart.setLibraryUri(navigate_pages_bloc.LaunchWelcomePage, I[0]);
+  navigate_pages_bloc.LaunchMainPage = class LaunchMainPage extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.LaunchMainPage.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.LaunchMainPage.prototype;
+  dart.addTypeTests(navigate_pages_bloc.LaunchMainPage);
+  dart.addTypeCaches(navigate_pages_bloc.LaunchMainPage);
+  dart.setLibraryUri(navigate_pages_bloc.LaunchMainPage, I[0]);
+  navigate_pages_bloc.LaunchSettingsPage = class LaunchSettingsPage extends navigate_pages_bloc.NavigatePagesEvent {};
+  (navigate_pages_bloc.LaunchSettingsPage.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.LaunchSettingsPage.prototype;
+  dart.addTypeTests(navigate_pages_bloc.LaunchSettingsPage);
+  dart.addTypeCaches(navigate_pages_bloc.LaunchSettingsPage);
+  dart.setLibraryUri(navigate_pages_bloc.LaunchSettingsPage, I[0]);
+  navigate_pages_bloc.NavigatePagesInitial = class NavigatePagesInitial extends navigate_pages_bloc.NavigatePagesState {};
+  (navigate_pages_bloc.NavigatePagesInitial.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.NavigatePagesInitial.prototype;
+  dart.addTypeTests(navigate_pages_bloc.NavigatePagesInitial);
+  dart.addTypeCaches(navigate_pages_bloc.NavigatePagesInitial);
+  dart.setLibraryUri(navigate_pages_bloc.NavigatePagesInitial, I[0]);
+  navigate_pages_bloc.NavBarSwitchesBinded = class NavBarSwitchesBinded extends navigate_pages_bloc.NavigatePagesState {};
+  (navigate_pages_bloc.NavBarSwitchesBinded.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.NavBarSwitchesBinded.prototype;
+  dart.addTypeTests(navigate_pages_bloc.NavBarSwitchesBinded);
+  dart.addTypeCaches(navigate_pages_bloc.NavBarSwitchesBinded);
+  dart.setLibraryUri(navigate_pages_bloc.NavBarSwitchesBinded, I[0]);
+  var isGroupStoredLocally$ = dart.privateName(navigate_pages_bloc, "GroupIdPresenceChecked.isGroupStoredLocally");
+  navigate_pages_bloc.GroupIdPresenceChecked = class GroupIdPresenceChecked extends navigate_pages_bloc.NavigatePagesState {
+    get isGroupStoredLocally() {
+      return this[isGroupStoredLocally$];
+    }
+    set isGroupStoredLocally(value) {
+      super.isGroupStoredLocally = value;
+    }
+  };
+  (navigate_pages_bloc.GroupIdPresenceChecked.new = function(isGroupStoredLocally) {
+    this[isGroupStoredLocally$] = isGroupStoredLocally;
+    ;
+  }).prototype = navigate_pages_bloc.GroupIdPresenceChecked.prototype;
+  dart.addTypeTests(navigate_pages_bloc.GroupIdPresenceChecked);
+  dart.addTypeCaches(navigate_pages_bloc.GroupIdPresenceChecked);
+  dart.setLibraryUri(navigate_pages_bloc.GroupIdPresenceChecked, I[0]);
+  dart.setFieldSignature(navigate_pages_bloc.GroupIdPresenceChecked, () => ({
+    __proto__: dart.getFields(navigate_pages_bloc.GroupIdPresenceChecked.__proto__),
+    isGroupStoredLocally: dart.finalFieldType(core.bool)
+  }));
+  navigate_pages_bloc.WelcomePageLaunched = class WelcomePageLaunched extends navigate_pages_bloc.NavigatePagesState {};
+  (navigate_pages_bloc.WelcomePageLaunched.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.WelcomePageLaunched.prototype;
+  dart.addTypeTests(navigate_pages_bloc.WelcomePageLaunched);
+  dart.addTypeCaches(navigate_pages_bloc.WelcomePageLaunched);
+  dart.setLibraryUri(navigate_pages_bloc.WelcomePageLaunched, I[0]);
+  navigate_pages_bloc.MainPageLaunched = class MainPageLaunched extends navigate_pages_bloc.NavigatePagesState {};
+  (navigate_pages_bloc.MainPageLaunched.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.MainPageLaunched.prototype;
+  dart.addTypeTests(navigate_pages_bloc.MainPageLaunched);
+  dart.addTypeCaches(navigate_pages_bloc.MainPageLaunched);
+  dart.setLibraryUri(navigate_pages_bloc.MainPageLaunched, I[0]);
+  navigate_pages_bloc.SettingsPageLaunched = class SettingsPageLaunched extends navigate_pages_bloc.NavigatePagesState {};
+  (navigate_pages_bloc.SettingsPageLaunched.new = function() {
+    ;
+  }).prototype = navigate_pages_bloc.SettingsPageLaunched.prototype;
+  dart.addTypeTests(navigate_pages_bloc.SettingsPageLaunched);
+  dart.addTypeCaches(navigate_pages_bloc.SettingsPageLaunched);
+  dart.setLibraryUri(navigate_pages_bloc.SettingsPageLaunched, I[0]);
+  dart.trackLibraries("packages/web_client/core/bloc/navigate_pages/navigate_pages_bloc", {
+    "package:web_client/core/bloc/navigate_pages/navigate_pages_bloc.dart": navigate_pages_bloc
+  }, {
+    "package:web_client/core/bloc/navigate_pages/navigate_pages_bloc.dart": ["navigate_pages_event.dart", "navigate_pages_state.dart"]
+  }, '{"version":3,"sourceRoot":"","sources":["navigate_pages_event.dart","navigate_pages_bloc.dart","navigate_pages_state.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;EAmBmC;;;;;;;;;;;;oBCWZ;;AADqB;AAGxC,YAAU,4BAAN,KAAK;AACP,yBAAM;UAAN;;AAGF,YAAU,iDAAN,KAAK;AACP,yBAAM;UAAN;;AAGF,YAAU,4CAAN,KAAK;AACD,qBAAkB;AACpB,8BAAgB;AAEpB,cAAI,AAAK,IAAD,iBAAiB,AAAK,AAAQ,IAAT;AACP,YAApB,gBAAgB;;AAGlB,yBAAM,mDAAuB,aAAa;UAA1C;;AAGF,YAAU,yCAAN,KAAK;AACP,yBAAM;UAAN;;AAGF,YAAU,sCAAN,KAAK;AACP,yBAAM;UAAN;;AAGF,YAAU,0CAAN,KAAK;AACP,yBAAM;UAAN;;MAEJ;;;;AApCsB,mEAAM;;EAAuB;;;;;;;;;;;EDLd;;;;;;;EAEqB;;;;;;;EAEL;;;;;;;EAEH;;;;;;;EAEH;;;;;;;EAEI;;;;;;;EEVE;;;;;;;EAEA;;;;;;IAK1C;;;;;;;;IAFiB;;EAAqB;;;;;;;;;;;EAKG;;;;;;;EAEH;;;;;;;EAEI","file":"navigate_pages_bloc.sound.ddc.js"}');
+  // Exports:
+  return {
+    core__bloc__navigate_pages__navigate_pages_bloc: navigate_pages_bloc
+  };
+}));
+
+//# sourceMappingURL=navigate_pages_bloc.sound.ddc.js.map

@@ -1,0 +1,53 @@
+define(['dart_sdk'], (function load__packages__web_client__remote_database_config(dart_sdk) {
+  'use strict';
+  const core = dart_sdk.core;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  var remote_database_config = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(true);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(remote_database_config, {
+    /*remote_database_config.apiKey*/get apiKey() {
+      return "AIzaSyCPre4Yn9WeTYV-jDof1GtI7ruswHyqyJ8";
+    },
+    /*remote_database_config.authDomain*/get authDomain() {
+      return "sufflain-app.firebaseapp.com";
+    },
+    /*remote_database_config.databaseURL*/get databaseURL() {
+      return "https=//sufflain-app-default-rtdb.europe-west1.firebasedatabase.app";
+    },
+    /*remote_database_config.projectId*/get projectId() {
+      return "sufflain-app";
+    },
+    /*remote_database_config.storageBucket*/get storageBucket() {
+      return "sufflain-app.appspot.com";
+    },
+    /*remote_database_config.messagingSenderId*/get messagingSenderId() {
+      return "648886847044";
+    },
+    /*remote_database_config.appId*/get appId() {
+      return "1=648886847044=web=55a26ae21021ea3a40de11";
+    },
+    /*remote_database_config.measurementId*/get measurementId() {
+      return "G-DXS36P7S0W";
+    },
+    /*remote_database_config.groupsNodeName*/get groupsNodeName() {
+      return "g";
+    },
+    /*remote_database_config.timetablesNodeName*/get timetablesNodeName() {
+      return "t";
+    }
+  }, false);
+  dart.trackLibraries("packages/web_client/remote_database_config", {
+    "package:web_client/remote_database_config.dart": remote_database_config
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["remote_database_config.dart"],"names":[],"mappings":";;;;;;;;;;;MAAM,6BAAM;;;MACN,iCAAU;;;MACV,kCAAW;;;MAEX,gCAAS;;;MACT,oCAAa;;;MACb,wCAAiB;;;MACjB,4BAAK;;;MACL,oCAAa;;;MAEb,qCAAc;;;MACd,yCAAkB","file":"remote_database_config.sound.ddc.js"}');
+  // Exports:
+  return {
+    remote_database_config: remote_database_config
+  };
+}));
+
+//# sourceMappingURL=remote_database_config.sound.ddc.js.map

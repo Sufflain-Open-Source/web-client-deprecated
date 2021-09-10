@@ -1,0 +1,180 @@
+define(['dart_sdk', 'packages/web_client/core/bloc/welcome/welcome_bloc', 'packages/web_client/data/implementations/repository', 'packages/web_client/core/bloc/observe_timetables/observe_timetables_bloc', 'packages/web_client/core/bloc/navigate_pages/navigate_pages_bloc', 'packages/bloc/bloc', 'packages/web_client/ui/pages/welcome_page', 'packages/web_client/ui/pages/main_page', 'packages/web_client/ui/pages/settings_page'], (function load__packages__web_client__app__init(dart_sdk, packages__web_client__core__bloc__welcome__welcome_bloc, packages__web_client__data__implementations__repository, packages__web_client__core__bloc__observe_timetables__observe_timetables_bloc, packages__web_client__core__bloc__navigate_pages__navigate_pages_bloc, packages__bloc__bloc, packages__web_client__ui__pages__welcome_page, packages__web_client__ui__pages__main_page, packages__web_client__ui__pages__settings_page) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const html = dart_sdk.html;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const welcome_bloc = packages__web_client__core__bloc__welcome__welcome_bloc.core__bloc__welcome__welcome_bloc;
+  const repository = packages__web_client__data__implementations__repository.data__implementations__repository;
+  const observe_timetables_bloc = packages__web_client__core__bloc__observe_timetables__observe_timetables_bloc.core__bloc__observe_timetables__observe_timetables_bloc;
+  const navigate_pages_bloc = packages__web_client__core__bloc__navigate_pages__navigate_pages_bloc.core__bloc__navigate_pages__navigate_pages_bloc;
+  const bloc = packages__bloc__bloc.src__bloc;
+  const welcome_page = packages__web_client__ui__pages__welcome_page.ui__pages__welcome_page;
+  const main_page = packages__web_client__ui__pages__main_page.ui__pages__main_page;
+  const settings_page = packages__web_client__ui__pages__settings_page.ui__pages__settings_page;
+  var init = Object.create(dart.library);
+  var $hidden = dartx.hidden;
+  var $addEventListener = dartx.addEventListener;
+  var $id = dartx.id;
+  dart._checkModuleNullSafetyMode(true);
+  var T = {
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    JSArrayOfBloc: () => (T.JSArrayOfBloc = dart.constFn(_interceptors.JSArray$(bloc.Bloc)))(),
+    NavigatePagesStateTovoid: () => (T.NavigatePagesStateTovoid = dart.constFn(dart.fnType(dart.void, [navigate_pages_bloc.NavigatePagesState])))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    EventToFutureOfvoid: () => (T.EventToFutureOfvoid = dart.constFn(dart.fnType(T.FutureOfvoid(), [html.Event])))(),
+    EventToNull: () => (T.EventToNull = dart.constFn(dart.fnType(core.Null, [html.Event])))()
+  };
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var I = ["package:web_client/app/init.dart"];
+  var navigatePagesBloc$ = dart.privateName(init, "InitializeApp.navigatePagesBloc");
+  var welcomeBloc = dart.privateName(init, "InitializeApp.welcomeBloc");
+  var mainBloc = dart.privateName(init, "InitializeApp.mainBloc");
+  var settingsBloc = dart.privateName(init, "InitializeApp.settingsBloc");
+  var _launchPage = dart.privateName(init, "_launchPage");
+  var _bindOnWindowCloseToBlocs = dart.privateName(init, "_bindOnWindowCloseToBlocs");
+  var _bindNavBarSwitches = dart.privateName(init, "_bindNavBarSwitches");
+  var _stopListeningOnWindowClose = dart.privateName(init, "_stopListeningOnWindowClose");
+  init.InitializeApp = class InitializeApp extends core.Object {
+    get navigatePagesBloc() {
+      return this[navigatePagesBloc$];
+    }
+    set navigatePagesBloc(value) {
+      super.navigatePagesBloc = value;
+    }
+    get welcomeBloc() {
+      return this[welcomeBloc];
+    }
+    set welcomeBloc(value) {
+      super.welcomeBloc = value;
+    }
+    get mainBloc() {
+      return this[mainBloc];
+    }
+    set mainBloc(value) {
+      super.mainBloc = value;
+    }
+    get settingsBloc() {
+      return this[settingsBloc];
+    }
+    set settingsBloc(value) {
+      super.settingsBloc = value;
+    }
+    listen() {
+      this.navigatePagesBloc.stream.listen(dart.fn(state => {
+        let t0;
+        let isGroupStoredLocally = false;
+        let launchMainPage = dart.fn(() => {
+          this[_launchPage](this.navigatePagesBloc, new navigate_pages_bloc.LaunchMainPage.new());
+        }, T.VoidToNull());
+        if (navigate_pages_bloc.NavigatePagesInitial.is(state)) {
+          this[_bindOnWindowCloseToBlocs](T.JSArrayOfBloc().of([this.navigatePagesBloc, this.welcomeBloc, this.mainBloc, this.settingsBloc]));
+          this[_bindNavBarSwitches]({mainSwitchFunction: launchMainPage, settingsSwitchFunction: dart.fn(() => {
+              this[_launchPage](this.navigatePagesBloc, new navigate_pages_bloc.LaunchSettingsPage.new());
+            }, T.VoidToNull())});
+          this.navigatePagesBloc.add(new navigate_pages_bloc.BindNavBarSwitchesToPages.new());
+        }
+        if (navigate_pages_bloc.NavBarSwitchesBinded.is(state)) {
+          this.navigatePagesBloc.add(new navigate_pages_bloc.CheckGroupIdPresence.new());
+        }
+        if (navigate_pages_bloc.GroupIdPresenceChecked.is(state)) {
+          isGroupStoredLocally = state.isGroupStoredLocally;
+          if (isGroupStoredLocally) {
+            this.navigatePagesBloc.add(new navigate_pages_bloc.LaunchMainPage.new());
+          } else {
+            this.navigatePagesBloc.add(new navigate_pages_bloc.LaunchWelcomePage.new());
+          }
+        }
+        if (navigate_pages_bloc.WelcomePageLaunched.is(state)) {
+          let welcomePage = new welcome_page.WelcomePage.new(launchMainPage);
+          this.welcomeBloc.add(new welcome_bloc.WelcomeComponentInit.new());
+          welcomePage.listen(this.welcomeBloc);
+        }
+        if (navigate_pages_bloc.MainPageLaunched.is(state)) {
+          let mainPage = new main_page.MainPage.new();
+          let navBar = html.document.querySelector("nav");
+          t0 = navBar;
+          t0 == null ? null : t0[$hidden] = false;
+          this.mainBloc.add(new observe_timetables_bloc.ObserveTimetablesInit.new());
+          mainPage.listen(this.mainBloc);
+        }
+        if (navigate_pages_bloc.SettingsPageLaunched.is(state)) {
+          let settingsPage = new settings_page.SettingsPage.new();
+          this.welcomeBloc.add(new welcome_bloc.WelcomeComponentInit.new());
+          settingsPage.listen(this.welcomeBloc);
+        }
+      }, T.NavigatePagesStateTovoid()));
+    }
+    [_launchPage](bloc, launchEvent) {
+      bloc.add(launchEvent);
+    }
+    [_bindOnWindowCloseToBlocs](blocs) {
+      for (let bloc of blocs) {
+        this[_stopListeningOnWindowClose](bloc);
+      }
+    }
+    [_stopListeningOnWindowClose](bloc) {
+      html.window[$addEventListener]("unload", dart.fn(event => bloc.close(), T.EventToFutureOfvoid()));
+    }
+    [_bindNavBarSwitches](opts) {
+      let t0, t0$, t0$0, t0$1;
+      let mainSwitchFunction = opts && 'mainSwitchFunction' in opts ? opts.mainSwitchFunction : null;
+      let settingsSwitchFunction = opts && 'settingsSwitchFunction' in opts ? opts.settingsSwitchFunction : null;
+      let mainSwitch = html.document.querySelector("#main-page-switch");
+      let settingsSwitch = html.document.querySelector("#settings-page-switch");
+      core.print((t0 = mainSwitch, t0 == null ? null : t0[$id]));
+      core.print((t0$ = settingsSwitch, t0$ == null ? null : t0$[$id]));
+      if (mainSwitchFunction != null) {
+        t0$0 = mainSwitch;
+        t0$0 == null ? null : t0$0[$addEventListener]("click", dart.fn(event => {
+          dart.dcall(mainSwitchFunction, []);
+        }, T.EventToNull()));
+      }
+      if (settingsSwitchFunction != null) {
+        t0$1 = settingsSwitch;
+        t0$1 == null ? null : t0$1[$addEventListener]("click", dart.fn(event => {
+          dart.dcall(settingsSwitchFunction, []);
+        }, T.EventToNull()));
+      }
+    }
+  };
+  (init.InitializeApp.new = function(navigatePagesBloc) {
+    this[welcomeBloc] = new welcome_bloc.WelcomeBloc.new(repository.Repository.instance);
+    this[mainBloc] = new observe_timetables_bloc.ObserveTimetablesBloc.new(repository.Repository.instance);
+    this[settingsBloc] = new welcome_bloc.WelcomeBloc.new(repository.Repository.instance);
+    this[navigatePagesBloc$] = navigatePagesBloc;
+    ;
+  }).prototype = init.InitializeApp.prototype;
+  dart.addTypeTests(init.InitializeApp);
+  dart.addTypeCaches(init.InitializeApp);
+  dart.setMethodSignature(init.InitializeApp, () => ({
+    __proto__: dart.getMethods(init.InitializeApp.__proto__),
+    listen: dart.fnType(dart.void, []),
+    [_launchPage]: dart.fnType(dart.void, [bloc.Bloc, navigate_pages_bloc.NavigatePagesEvent]),
+    [_bindOnWindowCloseToBlocs]: dart.fnType(dart.void, [core.List$(bloc.Bloc)]),
+    [_stopListeningOnWindowClose]: dart.fnType(dart.void, [bloc.Bloc]),
+    [_bindNavBarSwitches]: dart.fnType(dart.void, [], {mainSwitchFunction: dart.nullable(core.Function), settingsSwitchFunction: dart.nullable(core.Function)}, {})
+  }));
+  dart.setLibraryUri(init.InitializeApp, I[0]);
+  dart.setFieldSignature(init.InitializeApp, () => ({
+    __proto__: dart.getFields(init.InitializeApp.__proto__),
+    navigatePagesBloc: dart.finalFieldType(navigate_pages_bloc.NavigatePagesBloc),
+    welcomeBloc: dart.finalFieldType(welcome_bloc.WelcomeBloc),
+    mainBloc: dart.finalFieldType(observe_timetables_bloc.ObserveTimetablesBloc),
+    settingsBloc: dart.finalFieldType(welcome_bloc.WelcomeBloc)
+  }));
+  dart.trackLibraries("packages/web_client/app/init", {
+    "package:web_client/app/init.dart": init
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["init.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAc0B;;;;;;IAClB;;;;;;IACA;;;;;;IACA;;;;;;;AA2DF,MAxDF,AAAkB,AAAO,qCAAO,QAAC;;AAC3B,mCAAuB;AAElB,6BAAiB;AACwB,UAAhD,kBAAY,wBAAmB;;AAGjC,YAAU,4CAAN,KAAK;AAEsD,UAD7D,gCACI,sBAAC,wBAAmB,kBAAa,eAAU;AAKzC,UAJN,+CACwB,cAAc,0BACV;AAC8B,cAApD,kBAAY,wBAAmB;;AAGa,UAAlD,AAAkB,2BAAI;;AAGxB,YAAU,4CAAN,KAAK;AACsC,UAA7C,AAAkB,2BAAI;;AAGxB,YAAU,8CAAN,KAAK;AAC0C,UAAjD,uBAAuB,AAAM,KAAD;AAE5B,cAAI,oBAAoB;AACiB,YAAvC,AAAkB,2BAAI;;AAEoB,YAA1C,AAAkB,2BAAI;;;AAI1B,YAAU,2CAAN,KAAK;AACD,4BAAc,iCAAY,cAAc;AAEP,UAAvC,AAAY,qBAAI;AACe,UAA/B,AAAY,WAAD,QAAQ;;AAGrB,YAAU,wCAAN,KAAK;AACD,yBAAW;AACX,uBAAS,AAAS,4BAAc;AAEhB,eAAtB,MAAM;uBAAN,OAAQ,cAAS;AAEoB,UAArC,AAAS,kBAAI;AACY,UAAzB,AAAS,QAAD,QAAQ;;AAGlB,YAAU,4CAAN,KAAK;AACD,6BAAe;AAEkB,UAAvC,AAAY,qBAAI;AACgB,UAAhC,AAAa,YAAD,QAAQ;;;IAG1B;kBAEsB,MAAyB;AACxB,MAArB,AAAK,IAAD,KAAK,WAAW;IACtB;gCAE0C;AACxC,eAAW,OAAQ,MAAK;AACW,QAAjC,kCAA4B,IAAI;;IAEpC;kCAEsC;AACsB,MAA1D,AAAO,+BAAiB,UAAU,QAAC,SAAU,AAAK,IAAD;IACnD;;;UAGe;UAA8B;AACrC,uBAAa,AAAS,4BAAc;AACpC,2BAAiB,AAAS,4BAAc;AAEzB,MAArB,iBAAM,UAAU,eAAV,OAAY;AACO,MAAzB,kBAAM,cAAc,gBAAd,OAAgB;AAEtB,UAAI,kBAAkB;AAGlB,eAFF,UAAU;uBAAV,OAAY,wBAAiB,SAAS,QAAC;AACjB,UAAF,WAAlB,kBAAkB;;;AAItB,UAAI,sBAAsB;AAGtB,eAFF,cAAc;uBAAd,OAAgB,wBAAiB,SAAS,QAAC;AACjB,UAAF,WAAtB,sBAAsB;;;IAG5B;;qCApGmB;IAGb,oBAAc,iCAAuB;IACrC,iBAAW,sDAAiC;IAC5C,qBAAe,iCAAuB;IALzB;;EAAkB","file":"init.sound.ddc.js"}');
+  // Exports:
+  return {
+    app__init: init
+  };
+}));
+
+//# sourceMappingURL=init.sound.ddc.js.map
