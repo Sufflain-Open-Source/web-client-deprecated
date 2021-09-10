@@ -26,6 +26,9 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
     render();
   }
 
+  static const copyrightString = 'Copyright (c) 2021 Timofey Chuchkanov';
+  static const licenseNoteString = 'Licensed under the GNU AGPL v3.0';
+
   void listen(WelcomeBloc bloc) {
     bloc.stream.listen((state) {
       initiateLoading(state, bloc);

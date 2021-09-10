@@ -8,3 +8,6 @@ build/
 
 # Source files
 remote_database_config.dart
+
+# Scripts
+build.sh

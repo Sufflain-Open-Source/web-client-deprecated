@@ -31,9 +31,8 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
   static const titleId = 'title';
   static const noteId = 'note';
   static const submitButtonId = 'submitButton';
-  static const title = 'Добро пожаловать! Для начала выберите свою группу.';
-  static const note =
-      'Это одноразовая процедура. Позднее свой выбор можно изменить в настройках.';
+  static const title = 'Выберите группу.';
+  static const note = 'Позднее свой выбор можно изменить в настройках.';
   static const submitButtonText = 'Продолжить';
 
   void listen(WelcomeBloc bloc) {
