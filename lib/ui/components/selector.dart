@@ -23,7 +23,8 @@ String makeSelector(
 
   return '''<select name="$id" id="$id">
   ${_makeFirstOption(firstOptionBlank)}${optionsList.join()}
-  </select>''';
+  </select>
+  <div class="custom-arrow"></div>''';
 }
 
 String _makeFirstOption(bool firstBlank) =>
