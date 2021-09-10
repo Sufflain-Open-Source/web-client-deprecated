@@ -50,6 +50,7 @@ class MainPage implements PageContract {
   }
 
   void bindCardsClick() {
+    print('bind cards click');
     document
         .querySelectorAll('.${card_element.cardClassName}')
         .forEach((element) {

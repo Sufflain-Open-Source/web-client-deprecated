@@ -67,7 +67,6 @@ define(['dart_sdk', 'packages/web_client/core/entities/timetable', 'packages/web
           t0 == null ? null : t0[$addEventListener]("click", dart.fn(event => {
             back_button.hideBackButton();
             this.render();
-            this.bindCardsClick();
           }, T.EventToNull()));
         }, T.EventToNull()));
       }, T.ElementTovoid()));
@@ -102,7 +101,7 @@ define(['dart_sdk', 'packages/web_client/core/entities/timetable', 'packages/web
   dart.trackLibraries("packages/web_client/ui/pages/main_page", {
     "package:web_client/ui/pages/main_page.dart": main_page
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["main_page.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAgC4D,WAAxD,AAAS,4BAAc;mBAAd,OAAwB,iBAAY;IAC/C;WAEkC;AAa9B,MAZF,AAAK,AAAO,IAAR,eAAe,QAAC;;AAClB,YAAU,2DAAN,KAAK;AAC4D,eAAnE,AAAS,4BAAc;uBAAd,OAAwB,iBAAY;AACL,UAAxC,AAAK,IAAD,KAAK;;AAGX,YAAU,0DAAN,KAAK;AACuB,UAA9B,oBAAc,AAAM,KAAD;AAEX,UAAR;AACgB,UAAhB;;;IAGN;;AAkBI,MAfF,AACK,AACA,+CADiB,AAAgC,wBACzC,QAAC;AAYV,QAXF,AAAQ,OAAD,oBAAkB,SAAS,QAAC;;AAGpB,UAFb,AAEK,4DADG,AAAW,yBAAK,eAA2B,AAAY,gBAAhC,AAAM,KAAD;AAQlC,eALF,AAAS,4BAAc;uBAAd,OAA+B,sBAAiB,SACrD,QAAC;AACa,YAAhB;AACQ,YAAR;AACgB,YAAhB;;;;IAIR;;AAGO,kBAAgB;AAErB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,AAAY,4BAAQ,IAAA,AAAC,CAAA;AACiC,QAAxE,AAAM,KAAD,OAAK,2BAAsB,AAAE,CAAD,8BAA4B,WAAf,AAAW,yBAAC,CAAC;;AAG7D,YAAO,AAAM,MAAD;IACd;;;IAlDK,oBAAyB;;EAmDhC","file":"main_page.sound.ddc.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["main_page.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAgC4D,WAAxD,AAAS,4BAAc;mBAAd,OAAwB,iBAAY;IAC/C;WAEkC;AAa9B,MAZF,AAAK,AAAO,IAAR,eAAe,QAAC;;AAClB,YAAU,2DAAN,KAAK;AAC4D,eAAnE,AAAS,4BAAc;uBAAd,OAAwB,iBAAY;AACL,UAAxC,AAAK,IAAD,KAAK;;AAGX,YAAU,0DAAN,KAAK;AACuB,UAA9B,oBAAc,AAAM,KAAD;AAEX,UAAR;AACgB,UAAhB;;;IAGN;;AAiBI,MAdF,AACK,AACA,+CADiB,AAAgC,wBACzC,QAAC;AAWV,QAVF,AAAQ,OAAD,oBAAkB,SAAS,QAAC;;AAGpB,UAFb,AAEK,4DADG,AAAW,yBAAK,eAA2B,AAAY,gBAAhC,AAAM,KAAD;AAOlC,eAJF,AAAS,4BAAc;uBAAd,OAA+B,sBAAiB,SACrD,QAAC;AACa,YAAhB;AACQ,YAAR;;;;IAIR;;AAGO,kBAAgB;AAErB,eAAS,IAAI,GAAG,AAAE,CAAD,GAAG,AAAY,4BAAQ,IAAA,AAAC,CAAA;AACiC,QAAxE,AAAM,KAAD,OAAK,2BAAsB,AAAE,CAAD,8BAA4B,WAAf,AAAW,yBAAC,CAAC;;AAG7D,YAAO,AAAM,MAAD;IACd;;;IAjDK,oBAAyB;;EAkDhC","file":"main_page.sound.ddc.js"}');
   // Exports:
   return {
     ui__pages__main_page: main_page

@@ -12,3 +12,11 @@ html, body {
   padding: 20px;
   text-align: center;
 }
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+nav {
+  background-color: #FE4466;
+}

@@ -19,22 +19,22 @@ import 'dart:html';
 
 const backButtonId = 'back-button';
 
-/// Hides all child elements of the header and shows a back button.
+/// Hides all child elements of the nav bar and shows a back button.
 void showBackButton() {
-  _toggleHeaderElementsVisibility(shouldHideBackButton: false);
+  _toggleNavBarElementsVisibility(shouldHideBackButton: false);
 }
 
-/// Hides the back button and show header child elements.
+/// Hides the back button and show nav bar child elements.
 void hideBackButton() {
-  _toggleHeaderElementsVisibility(shouldHideBackButton: true);
+  _toggleNavBarElementsVisibility(shouldHideBackButton: true);
 }
 
-void _toggleHeaderElementsVisibility({required bool shouldHideBackButton}) {
-  final headerElementsWithoutButton =
-      document.querySelectorAll('header > :not(#back-button)');
+void _toggleNavBarElementsVisibility({required bool shouldHideBackButton}) {
+  final navBarElementsWithoutButton =
+      document.querySelectorAll('nav > :not(#back-button)');
   final backButton = document.querySelector('#back-button');
 
-  headerElementsWithoutButton.forEach((element) {
+  navBarElementsWithoutButton.forEach((element) {
     element.hidden = shouldHideBackButton == true ? false : true;
   });
 

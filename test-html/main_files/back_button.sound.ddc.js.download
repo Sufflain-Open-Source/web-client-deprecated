@@ -16,17 +16,17 @@ define(['dart_sdk'], (function load__packages__web_client__ui__components__back_
     _: () => (C, CT)
   });
   back_button.showBackButton = function showBackButton() {
-    back_button._toggleHeaderElementsVisibility({shouldHideBackButton: false});
+    back_button._toggleNavBarElementsVisibility({shouldHideBackButton: false});
   };
   back_button.hideBackButton = function hideBackButton() {
-    back_button._toggleHeaderElementsVisibility({shouldHideBackButton: true});
+    back_button._toggleNavBarElementsVisibility({shouldHideBackButton: true});
   };
-  back_button._toggleHeaderElementsVisibility = function _toggleHeaderElementsVisibility(opts) {
+  back_button._toggleNavBarElementsVisibility = function _toggleNavBarElementsVisibility(opts) {
     let t0;
     let shouldHideBackButton = opts && 'shouldHideBackButton' in opts ? opts.shouldHideBackButton : null;
-    let headerElementsWithoutButton = html.document[$querySelectorAll](html.Element, "header > :not(#back-button)");
+    let navBarElementsWithoutButton = html.document[$querySelectorAll](html.Element, "nav > :not(#back-button)");
     let backButton = html.document.querySelector("#back-button");
-    headerElementsWithoutButton[$forEach](dart.fn(element => {
+    navBarElementsWithoutButton[$forEach](dart.fn(element => {
       element[$hidden] = shouldHideBackButton === true ? false : true;
     }, T.ElementTovoid()));
     t0 = backButton;
