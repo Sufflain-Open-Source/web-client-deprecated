@@ -30,9 +30,12 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
 
   static const titleId = 'title';
   static const noteId = 'note';
+  static const logoId = 'logo';
+  static const selectSection = 'select-group-section';
   static const submitButtonId = 'submitButton';
   static const title = 'Выберите группу.';
-  static const note = 'Позднее свой выбор можно изменить в настройках.';
+  static const note =
+      '<span>Позднее свой выбор</span> можно изменить в настройках.';
   static const submitButtonText = 'Продолжить';
 
   void listen(WelcomeBloc bloc) {
@@ -60,9 +63,16 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
   void render() {
     final rootElement = document.querySelector('#root');
     final pageContent = '''
-    <h1 id="$titleId">$title</h1>
-    <div id="$noteId">$note</div>
-    <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
+    <div id="welcome-section">
+      <div id="welcome-text">
+        <h1 id="$titleId">$title</h1>
+        <div id="$noteId">$note</div>
+      </div>
+      <div id="$logoId"></div>
+    </div>
+    <div id="$selectSection">
+      <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
+    </div>
     <button id="$submitButtonId" disabled >$submitButtonText</button>
     ''';
 
