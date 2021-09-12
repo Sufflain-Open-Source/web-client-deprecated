@@ -268,6 +268,42 @@ p.card-title {
   text-align: center;
 }
 
+/*################# 
+  # Settings page #
+  #################*/
+
+p#settings-main-section-title {
+  color: var(--dark-red);
+  font-size: 15px;
+  font-weight: 700;
+  margin: auto 40px;
+  margin-top: 42px;
+  border-bottom: solid var(--dark-red);
+  border-width: 1px;
+}
+
+div#settings-main-section {
+  margin-left: 40px;
+}
+
+p#group-selector-label {
+  margin-top: 27px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--dark-red);
+}
+
+div#copyright-section {
+  text-align: center;
+  font-size: 10px;
+  color: var(--dark-red);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0px;
+  z-index: -1;
+}
+
 /* Debug */
 /* *, *::before,*::after
 {

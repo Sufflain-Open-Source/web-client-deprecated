@@ -26,6 +26,14 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
     render();
   }
 
+  static const mainSectionId = 'settings-main-section';
+  static const mainSectionTitleId = 'settings-main-section-title';
+  static const mainSectionTitle = 'Основные';
+  static const groupSeletorLabelId = 'group-selector-label';
+  static const groupSelectorLabel = 'Ваша группа';
+  static const copyrightSectionId = 'copyright-section';
+  static const copyrightStringId = 'copyright';
+  static const licenceNoteStringId = 'license';
   static const copyrightString = 'Copyright (c) 2021 Timofey Chuchkanov';
   static const licenseNoteString = 'Licensed under the GNU AGPL v3.0';
 
@@ -40,7 +48,16 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
   void render() {
     final root = document.querySelector('#root');
 
-    root?.innerHtml =
-        '<div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>';
+    root?.innerHtml = '''
+        <p id="$mainSectionTitleId">$mainSectionTitle</p>
+        <div id="$mainSectionId">
+          <p id="$groupSeletorLabelId">$groupSelectorLabel</p>
+          <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
+        </div>
+        <div id="$copyrightSectionId">
+          <p id="$copyrightStringId">$copyrightString</p>
+          <p id="$licenceNoteStringId">$licenseNoteString</p>
+        </div>
+        ''';
   }
 }
