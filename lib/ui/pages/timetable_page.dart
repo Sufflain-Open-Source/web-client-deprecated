@@ -28,6 +28,8 @@ class TimetablePage implements PageContract {
     render();
   }
 
+  static const linkTitleId = 'link-title';
+  static const titleId = 'timetable-title';
   static const timeColumnHeaderId = 'time';
   static const infoColumnHeaderId = 'info';
   static const timetableDivId = 'timetable';
@@ -39,8 +41,8 @@ class TimetablePage implements PageContract {
     final rootElement = document.querySelector('#root');
     final pageContent = '''
     <div>
-      <h1>${timetable.linkTitle}</h1>
-      <h2>${timetable.title}</h2>
+      <p id="$linkTitleId">${timetable.linkTitle}</p>
+      <p id="$titleId">${timetable.title}</p>
       <table border=1>
         <thead>
           <tr>

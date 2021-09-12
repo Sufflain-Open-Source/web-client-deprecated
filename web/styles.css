@@ -34,15 +34,20 @@
   --medium-blue: #c6f5fe;
   --dark-blue: #84cfff;
 
+  --nav-bar-height: 50px;
+
   --welcome-section-margin-top: 100px;
 
   --default-shadow-down: 0 3px 6px #00000029;
   --default-shadow-up: 0 -3px 6px #00000029;
+
+  --table-margin-vertical: 49px;
+  --table-margin-horizontal: 40px;
 }
 
 html, body {
   width: 100%;
-  height: 100%;
+  height: calc(100% + var(--nav-bar-height));
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -84,7 +89,7 @@ nav:not([hidden=""]) {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px; /*7vh*/
+  height: var(--nav-bar-height); /*7vh*/
   align-content: center;
   justify-content: space-between;
   color: var(--medium-blue);
@@ -303,6 +308,112 @@ div#copyright-section {
   transform: translateX(-50%);
   bottom: 80px;
   z-index: -1;
+}
+
+/*################# 
+  # Settings page #
+  #################*/
+
+p#link-title {
+  font-size: 15px;
+  margin: auto 40px;
+  margin-top: 42px;
+  padding-bottom: 6px;
+  text-align: center;
+  color: var(--dark-red);
+  font-weight: 700;
+  border-bottom: solid var(--dark-red);
+  border-width: 1px;
+}
+
+p#timetable-title {
+  color: var(--light-red);
+  font-size: 15px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+table {
+  margin: var(--table-margin-vertical) var(--table-margin-horizontal);
+  border-collapse: collapse;
+  border: 0;
+}
+
+table thead tr td:first-child {
+  border: 0;
+}
+
+table thead tr:first-child td {
+  padding-bottom: 24px;
+}
+
+table tr {
+  border: 0;
+}
+
+table tr td {
+  border: 0;
+}
+
+table tr:first-child {
+  border-bottom: solid var(--light-red);
+  border-width: 1px;
+}
+
+table tr {
+  border-bottom: solid var(--light-red);
+  border-width: 1px;
+}
+
+table tr td:nth-child(1) {
+  border-right: solid var(--light-red);
+  border-width: 1px;
+}
+
+td#time {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--dark-red);
+}
+
+td#info {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--dark-red);
+}
+
+tbody td {
+  color: var(--dark-red);  
+}
+
+tbody td:nth-child(1) {
+  text-align: center;
+  padding: 47px 21px;
+}
+
+tbody td:nth-child(2) {
+  padding: 21px 69px;
+}
+
+tbody td p:not(:nth-child(1)) {
+  margin-top: 6px;
+}
+
+/* For smaller mobile screens. */
+@media (max-width: 416px) {
+  table {
+    margin: var(--table-margin-vertical) calc(var(--table-margin-horizontal) / 2);
+  }
+
+  tbody td:nth-child(1) {
+    padding: 47px 10.5px;
+  }
+
+  tbody td:nth-child(2) {
+    padding: 21px 34.5px;
+  }
 }
 
 /* Debug */
