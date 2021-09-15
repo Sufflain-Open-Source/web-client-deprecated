@@ -293,6 +293,14 @@ p.card-title {
   text-align: center;
 }
 
+@media (min-width: 600px) {
+  div.card {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 /*################# 
   # Settings page #
   #################*/
