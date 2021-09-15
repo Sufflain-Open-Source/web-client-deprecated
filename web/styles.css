@@ -246,6 +246,25 @@ button {
   cursor: default;
 }
 
+@media (min-width: 500px) {
+  nav:not([hidden=""]) {
+    top: 0;
+    border-radius: unset;
+    box-shadow: var(--default-shadow-down);
+    justify-content: flex-end;
+  }
+
+  div#main-page-switch {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+
+  div#settings-page-switch {
+    margin-left: 0;
+    margin-right: 10vw;
+  }
+}
+
 /*############# 
   # Main page #
   #############*/
