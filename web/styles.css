@@ -63,6 +63,19 @@ main {
   height: 100%;
 }
 
+.loading-indicator {
+  background-image: url(img/loading.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
 #output {
   padding: 20px;
   text-align: center;
