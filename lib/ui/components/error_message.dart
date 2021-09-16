@@ -16,4 +16,4 @@
 */
 
 String makeMessage(String id, String message) =>
-    '<div id="$id">$message</div>';
+    '<div class="error-message" id="$id">$message</div>';
