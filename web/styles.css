@@ -129,6 +129,25 @@ nav:not([hidden=""]) {
   cursor: pointer;
 }
 
+@media (min-width: 600px) {
+  nav:not([hidden=""]) {
+    top: 0;
+    border-radius: unset;
+    box-shadow: var(--default-shadow-down);
+    justify-content: flex-end;
+  }
+
+  div#main-page-switch {
+    margin-left: 0;
+    margin-right: 15px;
+  }
+
+  div#settings-page-switch {
+    margin-left: 0;
+    margin-right: 10vw;
+  }
+}
+
 /*################
   # Welcome page #
   ################*/
@@ -175,7 +194,7 @@ nav:not([hidden=""]) {
 #select-group-section {
   display: grid;
   justify-content: center;
-  margin-bottom: 149px;
+  position: relative;
 }
 
 #groupSelectorPlaceholder {
@@ -216,6 +235,8 @@ nav:not([hidden=""]) {
 
 button {
   border: none;
+  position: absolute;
+  bottom: -149px;
 }
 
 #submitButton {
@@ -246,22 +267,39 @@ button {
   cursor: default;
 }
 
-@media (min-width: 500px) {
-  nav:not([hidden=""]) {
-    top: 0;
-    border-radius: unset;
-    box-shadow: var(--default-shadow-down);
-    justify-content: flex-end;
+@media (min-width: 600px) {
+  #welcome-section {
+    display: grid;
+    grid-template-columns: 200px auto;
+    position: relative;
+    margin-bottom: 50px;
   }
 
-  div#main-page-switch {
-    margin-left: 0;
-    margin-right: 15px;
+  #logo {
+    position: relative;
+    bottom: -50%;
+    width: 154.945px;
+    height: 250px;
+    margin-left: 34px;
   }
 
-  div#settings-page-switch {
-    margin-left: 0;
-    margin-right: 10vw;
+  #welcome-text {
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+  }
+
+  #select-group-section {
+    position: absolute;    
+    left: 50%;
+    margin: 0;
+  }
+
+  #submitButton {
+    position: relative;
+    left: 0;
+    bottom: -100px;
+    transform: none;
   }
 }
 
