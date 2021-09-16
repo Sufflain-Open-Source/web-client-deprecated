@@ -375,6 +375,16 @@ div#copyright-section {
   z-index: -1;
 }
 
+@media (min-width: 600px) {
+  #root {
+    margin-top: calc(var(--nav-bar-height) * 2);
+  }
+
+  nav {
+    z-index: 3; /* Raise above the group selector. */
+  }
+}
+
 /*################# 
   # Settings page #
   #################*/
