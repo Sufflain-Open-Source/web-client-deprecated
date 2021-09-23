@@ -21,4 +21,7 @@ abstract class LocalDatabaseContract {
   String get groupId;
 
   set groupId(String gid);
+
+  void clearGroupId();
+
 }

@@ -27,5 +27,7 @@ abstract class RepositoryContract {
 
   set groupId(String groupId);
 
+  void clearGroupId();
+
   Future<List<String>> getGroups();
 }

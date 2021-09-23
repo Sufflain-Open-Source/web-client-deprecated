@@ -15,6 +15,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'package:web_client/core/bloc/clear_group_id/clear_group_id_bloc.dart';
+
 import '../../core/bloc/welcome/welcome_bloc.dart';
 import '../../core/contracts/page_contract.dart';
 import 'group_selector_base_page.dart';
@@ -26,21 +28,44 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
     render();
   }
 
+  static const confirmGroupClearMessage =
+      'После удаления группы, приложение будет перезапущено. Продолжить?';
   static const mainSectionId = 'settings-main-section';
   static const mainSectionTitleId = 'settings-main-section-title';
   static const mainSectionTitle = 'Основные';
   static const groupSeletorLabelId = 'group-selector-label';
   static const groupSelectorLabel = 'Ваша группа';
+  static const clearGroupButtonId = 'clear-group';
   static const copyrightSectionId = 'copyright-section';
   static const copyrightStringId = 'copyright';
   static const licenceNoteStringId = 'license';
   static const copyrightString = 'Copyright (c) 2021 Timofey Chuchkanov';
   static const licenseNoteString = 'Licensed under the GNU AGPL v3.0';
 
-  void listen(WelcomeBloc bloc) {
-    bloc.stream.listen((state) {
-      initiateLoading(state, bloc);
-      showAndBindSelector(state: state, bloc: bloc, firstOptionBlank: false);
+  void listen(
+      {required WelcomeBloc welcomeBloc,
+      required ClearGroupIdBloc clearGroupIdBloc}) {
+    welcomeBloc.stream.listen((state) {
+      initiateLoading(state, welcomeBloc);
+      showAndBindSelector(
+          state: state, bloc: welcomeBloc, firstOptionBlank: false);
+    });
+
+    final clearButton =
+        document.querySelector('#${SettingsPage.clearGroupButtonId}');
+
+    clearButton?.addEventListener('click', (event) {
+      final clearGroupConfirmed = window.confirm(confirmGroupClearMessage);
+
+      if (clearGroupConfirmed) {
+        clearGroupIdBloc.add(ClearGroupIdConfirm());
+      }
+    });
+
+    clearGroupIdBloc.stream.listen((state) {
+      if (state is ClearGroupIdConfirmed) {
+        window.location.reload();
+      }
     });
   }
 
@@ -53,6 +78,7 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
         <div id="$mainSectionId">
           <p id="$groupSeletorLabelId">$groupSelectorLabel</p>
           <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
+          <button id="$clearGroupButtonId">CLEAR</button>
         </div>
         <div id="$copyrightSectionId">
           <p id="$copyrightStringId">$copyrightString</p>

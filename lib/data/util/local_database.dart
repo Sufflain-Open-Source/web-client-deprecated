@@ -30,5 +30,10 @@ class LocalDatabase implements LocalDatabaseContract {
   String get groupId => _storage[_groupIdKey] ?? '';
 
   @override
+  void clearGroupId() {
+    _storage.remove(_groupIdKey);
+  }
+
+  @override
   set groupId(String gid) => _storage[_groupIdKey] = gid;
 }

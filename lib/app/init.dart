@@ -1,3 +1,5 @@
+import 'package:web_client/core/bloc/clear_group_id/clear_group_id_bloc.dart';
+
 import '../core/bloc/navigate_pages/navigate_pages_bloc.dart';
 import '../core/bloc/observe_timetables/observe_timetables_bloc.dart';
 import '../core/bloc/welcome/welcome_bloc.dart';
@@ -16,6 +18,7 @@ class InitializeApp {
   final welcomeBloc = WelcomeBloc(Repository.instance);
   final mainBloc = ObserveTimetablesBloc(Repository.instance);
   final settingsBloc = WelcomeBloc(Repository.instance);
+  final clearGroupIdBloc = ClearGroupIdBloc(Repository.instance);
 
   void listen() {
     navigatePagesBloc.stream.listen((state) {
@@ -26,8 +29,13 @@ class InitializeApp {
       };
 
       if (state is NavigatePagesInitial) {
-        _bindOnWindowCloseToBlocs(
-            [navigatePagesBloc, welcomeBloc, mainBloc, settingsBloc]);
+        _bindOnWindowCloseToBlocs([
+          navigatePagesBloc,
+          welcomeBloc,
+          mainBloc,
+          settingsBloc,
+          clearGroupIdBloc
+        ]);
         _bindNavBarSwitches(
             mainSwitchFunction: launchMainPage,
             settingsSwitchFunction: () {
@@ -71,8 +79,9 @@ class InitializeApp {
       if (state is SettingsPageLaunched) {
         final settingsPage = SettingsPage();
 
-        welcomeBloc.add(WelcomeComponentInit());
-        settingsPage.listen(welcomeBloc);
+        settingsBloc.add(WelcomeComponentInit());
+        settingsPage.listen(
+            welcomeBloc: settingsBloc, clearGroupIdBloc: clearGroupIdBloc);
       }
     });
   }

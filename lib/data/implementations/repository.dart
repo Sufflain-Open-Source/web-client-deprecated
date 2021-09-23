@@ -53,6 +53,9 @@ class Repository implements RepositoryContract {
   @override
   set groupId(String groupId) => _localDatabase.groupId = groupId;
 
+  @override 
+  void clearGroupId() => _localDatabase.clearGroupId();
+
   @override
   Future<List<String>> getGroups() => _remoteDatabase.getGroups();
 }
