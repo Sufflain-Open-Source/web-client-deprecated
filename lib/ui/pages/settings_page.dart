@@ -78,7 +78,7 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
         <div id="$mainSectionId">
           <p id="$groupSeletorLabelId">$groupSelectorLabel</p>
           <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
-          <button id="$clearGroupButtonId">CLEAR</button>
+          <button id="$clearGroupButtonId">x</button>
         </div>
         <div id="$copyrightSectionId">
           <p id="$copyrightStringId">$copyrightString</p>

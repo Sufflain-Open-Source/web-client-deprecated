@@ -3,22 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
   <title>Sufflain</title>
   <link rel="stylesheet" href="../web/styles.css">
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-  <script
-    data-dapp-detection="">!function () { let e = !1; function n() { if (!e) { const n = document.createElement("meta"); n.name = "dapp-detected", document.head.appendChild(n), e = !0 } } if (window.hasOwnProperty("ethereum")) { if (window.__disableDappDetectionInsertion = !0, void 0 === window.ethereum) return; n() } else { var t = window.ethereum; Object.defineProperty(window, "ethereum", { configurable: !0, enumerable: !1, set: function (e) { window.__disableDappDetectionInsertion || n(), t = e }, get: function () { if (!window.__disableDappDetectionInsertion) { const e = arguments.callee; e && e.caller && e.caller.toString && -1 !== e.caller.toString().indexOf("getOwnPropertyNames") || n() } return t } }) } }();</script>
-  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
-  <script defer="" src="main.dart.js"></script>
 </head>
 
 <body>
   <header>
-    <img hidden="" alt="Sufflain logo" src="">
     <nav>
-      <div id="back-button" hidden=""><img src="img/navigate-back.svg" alt="Navigate back button"></div>
+      <div id="back-button" hidden=""><img src="../web/img/navigate-back.svg" alt="Navigate back button"></div>
       <div id="main-page-switch">
         <input type="radio" id="main" name="page-selector" value="#main" checked="">
         <label for="main">Главная</label>
@@ -35,54 +29,56 @@
     <div id="settings-main-section">
       <p id="group-selector-label">Ваша группа</p>
       <div id="groupSelectorPlaceholder"><select name="groups" id="groups">
-          <option value="ИБ12-20">ИБ12-20</option>
-          <option value="Э11-20">Э11-20</option>
-          <option value="Ф11-20">Ф11-20</option>
-          <option value="Б11-20">Б11-20</option>
-          <option value="ИБ11-20">ИБ11-20</option>
-          <option value="СА11-20">СА11-20</option>
-          <option value="СА12-20">СА12-20</option>
-          <option value="БА11-20">БА11-20</option>
-          <option value="БА12-20">БА12-20</option>
-          <option value="БА13-20">БА13-20</option>
-          <option value="БА21-19">БА21-19</option>
-          <option value="БА22-19">БА22-19</option>
-          <option value="БА23-19">БА23-19</option>
-          <option value="БА24-19">БА24-19</option>
-          <option value="БА25-19">БА25-19</option>
-          <option value="БА31-18">БА31-18</option>
-          <option value="БА32-18">БА32-18</option>
-          <option value="БА34-18">БА34-18</option>
-          <option value="БА35-18">БА35-18</option>
-          <option value="БА41-17">БА41-17</option>
-          <option value="БА42-17">БА42-17</option>
-          <option value="БА43-17">БА43-17</option>
-          <option value="Э21-19">Э21-19</option>
-          <option value="Э31-18">Э31-18</option>
-          <option value="Ф21-19">Ф21-19</option>
-          <option value="Ф31-18">Ф31-18</option>
-          <option value="Б12-20">Б12-20</option>
-          <option value="Б21-19">Б21-19</option>
-          <option value="Б31-18">Б31-18</option>
-          <option value="ИБ13-20">ИБ13-20</option>
-          <option value="ИБ21-19">ИБ21-19</option>
-          <option value="ИБ22-19">ИБ22-19</option>
-          <option value="ИБ23-19">ИБ23-19</option>
-          <option value="ИБ31-18">ИБ31-18</option>
-          <option value="ИБ32-18">ИБ32-18</option>
-          <option value="И22-19">И22-19</option>
-          <option value="И32-18">И32-18</option>
-          <option value="СА21-19">СА21-19</option>
-          <option value="СА22-19">СА22-19</option>
-          <option value="СА31-18">СА31-18</option>
-          <option value="СА41-17">СА41-17</option>
-          <option value="ИС12-20">ИС12-20</option>
-          <option value="ИС21-19">ИС21-19</option>
-          <option value="ИС22-19">ИС22-19</option>
-          <option value="ИС32-18">ИС32-18</option>
+          <option value="БА12-21">БА12-21</option>
+          <option value="Э11-21">Э11-21</option>
+          <option value="Ф11-21">Ф11-21</option>
+          <option value="Б11-21">Б11-21</option>
+          <option value="ИБ11-21">ИБ11-21</option>
+          <option value="ИБ12-21">ИБ12-21</option>
+          <option value="СА11-21">СА11-21</option>
+          <option value="ИС11-21">ИС11-21</option>
+          <option value="БА11-21">БА11-21</option>
+          <option value="ИБ13-21">ИБ13-21</option>
+          <option value="ИБ21-20">ИБ21-20</option>
+          <option value="ИБ22-20">ИБ22-20</option>
+          <option value="ИБ23-20">ИБ23-20</option>
+          <option value="ИБ31-19">ИБ31-19</option>
+          <option value="ИБ33-19">ИБ33-19</option>
+          <option value="ИБ32-19">ИБ32-19</option>
+          <option value="ИБ41-18">ИБ41-18</option>
+          <option value="И32-19">И32-19</option>
+          <option value="СА21-20">СА21-20</option>
+          <option value="СА22-20">СА22-20</option>
+          <option value="СА31-19">СА31-19</option>
+          <option value="СА32-19">СА32-19</option>
+          <option value="СА41-18">СА41-18</option>
+          <option value="ИС12-21">ИС12-21</option>
+          <option value="ИС22-20">ИС22-20</option>
+          <option value="ИС31-19">ИС31-19</option>
+          <option value="ИС32-19">ИС32-19</option>
+          <option value="Э21-20">Э21-20</option>
+          <option value="Э31-19">Э31-19</option>
+          <option value="Ф21-20">Ф21-20</option>
+          <option value="Ф31-19">Ф31-19</option>
+          <option value="Б12-21">Б12-21</option>
+          <option value="Б21-20">Б21-20</option>
+          <option value="Б22-20">Б22-20</option>
+          <option value="Б31-19">Б31-19</option>
+          <option value="БА13-21">БА13-21</option>
+          <option value="БА21-20">БА21-20</option>
+          <option value="БА22-20">БА22-20</option>
+          <option value="БА23-20">БА23-20</option>
+          <option value="БА31-19">БА31-19</option>
+          <option value="БА32-19">БА32-19</option>
+          <option value="БА35-19">БА35-19</option>
+          <option value="БА33-19">БА33-19</option>
+          <option value="БА34-19">БА34-19</option>
+          <option value="БА41-18">БА41-18</option>
+          <option value="БА42-18">БА42-18</option>
         </select>
         <div class="custom-arrow"></div>
       </div>
+      <button id="clear-group">x</button>
     </div>
     <div id="copyright-section">
       <p id="copyright">Copyright (c) 2021 Timofey Chuchkanov</p>
