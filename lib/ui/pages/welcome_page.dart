@@ -17,7 +17,7 @@
 
 import 'group_selector_base_page.dart';
 import '../../../core/contracts/page_contract.dart';
-import '../../core/bloc/welcome/welcome_bloc.dart';
+import '../../core/use_cases/welcome/welcome_bloc.dart';
 
 import 'dart:html';
 

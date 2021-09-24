@@ -1,8 +1,23 @@
-import 'package:web_client/core/bloc/clear_group_id/clear_group_id_bloc.dart';
+/*
+    Copyright (C) 2021  Timofey Chuchkanov
 
-import '../core/bloc/navigate_pages/navigate_pages_bloc.dart';
-import '../core/bloc/observe_timetables/observe_timetables_bloc.dart';
-import '../core/bloc/welcome/welcome_bloc.dart';
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+import '../core/use_cases/navigate_pages/navigate_pages_bloc.dart';
+import '../core/use_cases/observe_timetables/observe_timetables_bloc.dart';
+import '../core/use_cases/welcome/welcome_bloc.dart';
 import '../data/implementations/repository.dart';
 import '../ui/pages/main_page.dart';
 import '../ui/pages/settings_page.dart';
@@ -18,7 +33,6 @@ class InitializeApp {
   final welcomeBloc = WelcomeBloc(Repository.instance);
   final mainBloc = ObserveTimetablesBloc(Repository.instance);
   final settingsBloc = WelcomeBloc(Repository.instance);
-  final clearGroupIdBloc = ClearGroupIdBloc(Repository.instance);
 
   void listen() {
     navigatePagesBloc.stream.listen((state) {
@@ -29,13 +43,8 @@ class InitializeApp {
       };
 
       if (state is NavigatePagesInitial) {
-        _bindOnWindowCloseToBlocs([
-          navigatePagesBloc,
-          welcomeBloc,
-          mainBloc,
-          settingsBloc,
-          clearGroupIdBloc
-        ]);
+        _bindOnWindowCloseToBlocs(
+            [navigatePagesBloc, welcomeBloc, mainBloc, settingsBloc]);
         _bindNavBarSwitches(
             mainSwitchFunction: launchMainPage,
             settingsSwitchFunction: () {
@@ -80,8 +89,7 @@ class InitializeApp {
         final settingsPage = SettingsPage();
 
         settingsBloc.add(WelcomeComponentInit());
-        settingsPage.listen(
-            welcomeBloc: settingsBloc, clearGroupIdBloc: clearGroupIdBloc);
+        settingsPage.listen(settingsBloc);
       }
     });
   }

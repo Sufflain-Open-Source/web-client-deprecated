@@ -15,7 +15,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import '../../core/bloc/observe_timetables/observe_timetables_bloc.dart';
+import '../../core/use_cases/observe_timetables/observe_timetables_bloc.dart';
 import '../components/back_button.dart';
 import '../components/loading_indicator.dart';
 import 'timetable_page.dart';

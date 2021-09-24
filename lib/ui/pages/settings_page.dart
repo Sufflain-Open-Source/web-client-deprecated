@@ -15,9 +15,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:web_client/core/bloc/clear_group_id/clear_group_id_bloc.dart';
-
-import '../../core/bloc/welcome/welcome_bloc.dart';
+import '../../core/use_cases/clear_group_id/clear_group_id.dart' as clear_group_id;
+import '../../core/use_cases/welcome/welcome_bloc.dart';
 import '../../core/contracts/page_contract.dart';
 import 'group_selector_base_page.dart';
 
@@ -42,9 +41,7 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
   static const copyrightString = 'Copyright (c) 2021 Timofey Chuchkanov';
   static const licenseNoteString = 'Licensed under the GNU AGPL v3.0';
 
-  void listen(
-      {required WelcomeBloc welcomeBloc,
-      required ClearGroupIdBloc clearGroupIdBloc}) {
+  void listen(WelcomeBloc welcomeBloc) {
     welcomeBloc.stream.listen((state) {
       initiateLoading(state, welcomeBloc);
       showAndBindSelector(
@@ -58,12 +55,7 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
       final clearGroupConfirmed = window.confirm(confirmGroupClearMessage);
 
       if (clearGroupConfirmed) {
-        clearGroupIdBloc.add(ClearGroupIdConfirm());
-      }
-    });
-
-    clearGroupIdBloc.stream.listen((state) {
-      if (state is ClearGroupIdConfirmed) {
+        clear_group_id.clearGroupId();
         window.location.reload();
       }
     });

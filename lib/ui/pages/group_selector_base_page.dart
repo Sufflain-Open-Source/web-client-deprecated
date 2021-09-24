@@ -19,7 +19,7 @@ import '../../data/implementations/repository.dart';
 import '../components/error_message.dart';
 import '../components/selector.dart';
 import '../components/loading_indicator.dart';
-import '../../core/bloc/welcome/welcome_bloc.dart';
+import '../../core/use_cases/welcome/welcome_bloc.dart';
 
 import 'dart:html';
 

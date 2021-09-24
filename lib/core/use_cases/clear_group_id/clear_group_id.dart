@@ -15,13 +15,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:web_client/app/init.dart';
-import 'package:web_client/core/use_cases/navigate_pages/navigate_pages_bloc.dart';
+import 'package:web_client/data/implementations/repository.dart';
 
-void main() {
-  final navigatePagesBloc = NavigatePagesBloc();
-  final initApp = InitializeApp(navigatePagesBloc);
-
-  navigatePagesBloc.add(Init());
-  initApp.listen();
+void clearGroupId() {
+  Repository.instance.clearGroupId();
 }
