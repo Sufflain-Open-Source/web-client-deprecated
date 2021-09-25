@@ -314,7 +314,6 @@ button {
 
   #submitButton {
     position: relative;
-    left: 0;
     bottom: -100px;
     transform: none;
   }
