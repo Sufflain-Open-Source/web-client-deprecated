@@ -29,3 +29,9 @@ class WelcomeComponentSelect extends WelcomeEvent {
 
   final String groupId;
 }
+
+class WelcomeComponentSaveSelectedGroup extends WelcomeEvent {
+  WelcomeComponentSaveSelectedGroup(this.groupId);
+
+  final String groupId;
+}

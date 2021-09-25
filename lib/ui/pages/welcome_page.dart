@@ -41,18 +41,20 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
   void listen(WelcomeBloc bloc) {
     bloc.stream.listen((state) {
       initiateLoading(state, bloc);
-      showAndBindSelector(state: state, bloc: bloc, firstOptionBlank: true);
+      showAndBindSelector(state: state, bloc: bloc, firstOptionBlank: true, shoudlSaveUsingButton: true);
 
       if (state is WelcomeComponentSelected) {
         final button = querySelector('#$submitButtonId');
+        final groupId = state.groupId.trim();
 
-        if (state.groupId.trim().isNotEmpty) {
+        if (groupId.isNotEmpty) {
           (button as ButtonElement).disabled = false;
         } else {
           (button as ButtonElement).disabled = true;
         }
 
         button.addEventListener('click', (event) {
+          bloc.add(WelcomeComponentSaveSelectedGroup(groupId));
           onSubmitButtonClick();
         });
       }

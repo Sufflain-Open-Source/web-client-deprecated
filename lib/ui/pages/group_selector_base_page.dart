@@ -39,7 +39,8 @@ class GroupSelectorBasePage {
   void showAndBindSelector(
       {required WelcomeState state,
       required WelcomeBloc bloc,
-      required bool firstOptionBlank}) {
+      required bool firstOptionBlank,
+      required bool shoudlSaveUsingButton}) {
     if (state is WelcomeComponentLoaded) {
       final groups = state.groups;
       final placeholder = document.querySelector('#$selectorPlaceholderId');
@@ -67,8 +68,13 @@ class GroupSelectorBasePage {
 
         final selector = document.querySelector('#groups');
         selector?.addEventListener('change', (event) {
-          final selectedGroup = (selector as SelectElement).value!;
-          bloc.add(WelcomeComponentSelect(selectedGroup));
+          final selectedGroup = (selector as SelectElement).value!;          
+
+          if (!shoudlSaveUsingButton) {
+            bloc.add(WelcomeComponentSaveSelectedGroup(selectedGroup));
+          } else {
+            bloc.add(WelcomeComponentSelect(selectedGroup));
+          }
         });
       }
     }

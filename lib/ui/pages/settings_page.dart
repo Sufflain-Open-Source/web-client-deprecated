@@ -45,7 +45,7 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
     welcomeBloc.stream.listen((state) {
       initiateLoading(state, welcomeBloc);
       showAndBindSelector(
-          state: state, bloc: welcomeBloc, firstOptionBlank: false);
+          state: state, bloc: welcomeBloc, firstOptionBlank: false, shoudlSaveUsingButton: false);
     });
 
     final clearButton =

@@ -43,8 +43,11 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
     }
 
     if (event is WelcomeComponentSelect) {
-      repo.groupId = event.groupId;
       yield WelcomeComponentSelected(event.groupId);
+    }
+
+    if (event is WelcomeComponentSaveSelectedGroup) {
+      repo.groupId = event.groupId;
     }
   }
 }
