@@ -254,6 +254,13 @@ button {
   border: none;
   position: absolute;
   bottom: -149px;
+  transition: background-color 300ms, transform 100ms, shadow 100ms;
+}
+
+button:not(:disabled):hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: var(--default-shadow-down);
 }
 
 #submitButton {
@@ -262,7 +269,7 @@ button {
   height: 40px;
   border-radius: 10px;
   color: var(--medium-blue);
-  transition: background-color 300ms, transform 100ms, shadow 100ms;
+  background-color: var(--medium-red);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
@@ -416,9 +423,8 @@ button#clear-group {
   font-size: 15px;
 }
 
-button#clear-group:hover {
-  transform: scale(1.1);
-  cursor: pointer;
+button#clear-group:active {
+  background-color: var(--dark-red);
 }
 
 /*################## 
