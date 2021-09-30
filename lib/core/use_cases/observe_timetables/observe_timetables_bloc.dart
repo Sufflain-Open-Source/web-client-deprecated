@@ -17,6 +17,7 @@
 
 import '../../contracts/repository_contract.dart';
 import '../../entities/timetable.dart';
+import 'alter_data.dart';
 
 import 'dart:async';
 import 'package:bloc/bloc.dart';
@@ -43,12 +44,5 @@ class ObserveTimetablesBloc
 
       yield ObserveTimetablesContentLoaded(timetalbesSorted);
     }
-  }
-
-  List<Timetable> sortTimetablesByTimePosted(List<Timetable> timetables) {
-    var timetablesSorted = timetables;
-    timetables.sort((first, second) => first.order.compareTo(second.order));
-
-    return timetablesSorted;
   }
 }
