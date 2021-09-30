@@ -38,24 +38,6 @@ class RemoteDatabase implements RemoteDatabaseContract {
 
   late final Database _realtimeDatabase;
 
-  // @override
-  // Stream<List<TimetableModel>> getTimetablesChangesStream(String groupId) {
-  //   final queryEventStream = _getDataChangesStream(groupId);
-  //   return RemoteDatabase._timetablesChangesAsStream(queryEventStream);
-  // }
-
-  // static Stream<List<TimetableModel>> _timetablesChangesAsStream(
-  //     Stream<QueryEvent> dataStream) async* {
-  //   await for (final event in dataStream) {
-  //     final snapshot = event.snapshot;
-  //     final List<Map<String, dynamic>> timetablesJson = snapshot.val();
-
-  //     yield timetablesJson
-  //         .map((element) => TimetableModel.fromJson(element))
-  //         .toList();
-  //   }
-  // }
-
   @override
   Future<List<Timetable>> getTimetables(String groupId) async {
     final timetablesReference = _realtimeDatabase.ref(config.timetablesNodeName).child(groupId);
