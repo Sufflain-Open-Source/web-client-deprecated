@@ -14,6 +14,7 @@ void main() {
     final timetableJson = JsonDecoder().convert(timetableJsonString);
     final timetableModel = TimetableModel.fromJson(timetableJson);
     final exampleTimetableModel = TimetableModel(
+        order: 0,
         title: 'Б11-20 ауд.501',
         linkTitle: 'Расписание занятий на 27 апреля 2021 года',
         lessons: [
