@@ -33,13 +33,22 @@ class ObserveTimetablesBloc
   Stream<ObserveTimetablesState> mapEventToState(
     ObserveTimetablesEvent event,
   ) async* {
-
     if (event is ObserveTimetablesInit) {
       yield ObserveTimetablesLoadingContent();
     }
 
     if (event is ObserveTimetablesLoadContent) {
-      yield ObserveTimetablesContentLoaded(await repo.getTimetables(repo.groupId));
+      final timetables = await repo.getTimetables(repo.groupId);
+      final timetalbesSorted = sortTimetablesByTimePosted(timetables);
+
+      yield ObserveTimetablesContentLoaded(timetalbesSorted);
     }
+  }
+
+  List<Timetable> sortTimetablesByTimePosted(List<Timetable> timetables) {
+    var timetablesSorted = timetables;
+    timetables.sort((first, second) => first.order.compareTo(second.order));
+
+    return timetablesSorted;
   }
 }

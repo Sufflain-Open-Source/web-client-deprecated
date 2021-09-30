@@ -20,16 +20,23 @@ import 'package:equatable/equatable.dart';
 import 'lesson.dart';
 
 /// Represents a timetable.
-/// 
+///
 /// [title] contains a timetable title with a group id.
 /// [linkTitle] contains a text that will allow a user to locate a timetable and open it.
+/// [order] contains a number that helps to identify which
+/// timetable was added earlier than others.
 class Timetable extends Equatable {
-  Timetable({required this.title, required this.linkTitle, required this.lessons});
+  Timetable(
+      {required this.title,
+      required this.linkTitle,
+      required this.lessons,
+      required this.order});
 
+  final int order;
   final String title;
   final String linkTitle;
   final List<Lesson> lessons;
 
   @override
-  List<Object?> get props => [title, linkTitle, lessons];
+  List<Object?> get props => [title, linkTitle, lessons, order];
 }
