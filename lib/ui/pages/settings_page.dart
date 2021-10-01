@@ -42,14 +42,21 @@ class SettingsPage extends GroupSelectorBasePage implements PageContract {
   static const licenseNoteString = 'Licensed under the GNU AGPL v3.0';
 
   void listen(WelcomeBloc welcomeBloc) {
+    final clearButton =
+        document.querySelector('#${SettingsPage.clearGroupButtonId}');
+    clearButton?.hidden = true;
+    
     welcomeBloc.stream.listen((state) {
       initiateLoading(state, welcomeBloc);
       showAndBindSelector(
           state: state, bloc: welcomeBloc, firstOptionBlank: false, shoudlSaveUsingButton: false);
+      
+      if (state is WelcomeComponentLoaded) {
+        if (state.groups.isNotEmpty) {
+          clearButton?.hidden = false;
+        }
+      }
     });
-
-    final clearButton =
-        document.querySelector('#${SettingsPage.clearGroupButtonId}');
 
     clearButton?.addEventListener('click', (event) {
       final clearGroupConfirmed = window.confirm(confirmGroupClearMessage);
