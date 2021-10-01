@@ -40,10 +40,17 @@ class RemoteDatabase implements RemoteDatabaseContract {
 
   @override
   Future<List<Timetable>> getTimetables(String groupId) async {
-    final timetablesReference = _realtimeDatabase.ref(config.timetablesNodeName).child(groupId);
-    final timetablesJson = await timetablesReference
-        .once('value')
-        .then((event) => event.snapshot.val()) as Map<String, dynamic>;
+    final timetablesReference =
+        _realtimeDatabase.ref(config.timetablesNodeName).child(groupId);
+    final Map<String, dynamic> timetablesJson;
+
+    try {
+      timetablesJson = await timetablesReference
+          .once('value')
+          .then((event) => event.snapshot.val()) as Map<String, dynamic>;
+    } catch (e) {
+      return [];
+    }
 
     if (timetablesJson.isEmpty) {
       return [];
@@ -51,13 +58,23 @@ class RemoteDatabase implements RemoteDatabaseContract {
 
     final timetablesJsonValues = timetablesJson.values.toList();
 
-    return timetablesJsonValues.map((value) => TimetableModel.fromJson(value)).toList();
+    return timetablesJsonValues
+        .map((value) => TimetableModel.fromJson(value))
+        .toList();
   }
 
   @override
   Future<List<String>> getGroups() async {
     final groupsReference = _realtimeDatabase.ref(config.groupsNodeName);
-    final groups = await groupsReference.once('value').then((event) => event.snapshot.val());
+    final groups;
+
+    try {
+    groups = await groupsReference
+        .once('value')
+        .then((event) => event.snapshot.val());
+    } catch(e) {
+      return [];
+    }
 
     return groups == null ? <String>[] : List<String>.from(groups);
   }
