@@ -15,5 +15,5 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-String makeMessage(String id, String message) =>
-    '<div class="error-message" id="$id">$message</div>';
+String makeMessage(String msgClass, String id, String message) =>
+    '<div class="$msgClass" id="$id">$message</div>';

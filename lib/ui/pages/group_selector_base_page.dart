@@ -56,8 +56,8 @@ class GroupSelectorBasePage {
       }
 
       if (groups.isEmpty) {
-        placeholder?.innerHtml =
-            makeMessage('loading-error', errorMessageLoadGroups);
+        placeholder?.innerHtml = makeMessage(
+            'error-message', 'loading-error', errorMessageLoadGroups);
       } else {
         placeholder?.innerHtml = makeSelector(
             id: 'groups',
@@ -68,7 +68,7 @@ class GroupSelectorBasePage {
 
         final selector = document.querySelector('#groups');
         selector?.addEventListener('change', (event) {
-          final selectedGroup = (selector as SelectElement).value!;          
+          final selectedGroup = (selector as SelectElement).value!;
 
           if (!shoudlSaveUsingButton) {
             bloc.add(WelcomeComponentSaveSelectedGroup(selectedGroup));

@@ -15,6 +15,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import 'package:web_client/ui/components/error_message.dart';
+
 import '../../core/use_cases/observe_timetables/observe_timetables_bloc.dart';
 import '../components/back_button.dart';
 import '../components/loading_indicator.dart';
@@ -26,6 +28,7 @@ import '../../core/contracts/page_contract.dart';
 import 'dart:html';
 
 class MainPage implements PageContract {
+  static final nothingToShowMessage = 'Здесь нечего показывать.';
   List _timetables = <Timetable>[];
 
   @override
@@ -42,9 +45,14 @@ class MainPage implements PageContract {
 
       if (state is ObserveTimetablesContentLoaded) {
         _timetables = state.timetables;
-        
-        render();
-        bindCardsClick();
+
+        if (_timetables.isEmpty) {
+          document.querySelector('#root')?.innerHtml =
+              makeMessage('message', 'no-data', nothingToShowMessage);
+        } else {
+          render();
+          bindCardsClick();
+        }
       }
     });
   }
