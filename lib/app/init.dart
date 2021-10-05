@@ -26,6 +26,11 @@ import '../ui/pages/welcome_page.dart';
 import 'dart:html';
 import 'package:bloc/bloc.dart';
 
+enum NavBarRadioButton {
+  main,
+  settings
+}
+
 class InitializeApp {
   InitializeApp(this.navigatePagesBloc);
 
@@ -34,25 +39,27 @@ class InitializeApp {
   final mainBloc = ObserveTimetablesBloc(Repository.instance);
   final settingsBloc = WelcomeBloc(Repository.instance);
 
+  final mainPage = MainPage();
+  final settingsPage = SettingsPage();
+
   void listen() {
+    mainPage.listen(mainBloc);
+    settingsPage.listen(settingsBloc);
+
+    _bindOnWindowCloseToBlocs(
+        [navigatePagesBloc, welcomeBloc, mainBloc, settingsBloc]);
+    _bindNavBarSwitches(
+        mainSwitchFunction: _launchMainPage,
+        settingsSwitchFunction: () {
+          navigatePagesBloc.add(LaunchSettingsPage());
+        });
+
+    navigatePagesBloc.add(BindNavBarSwitchesToPages());
+
     navigatePagesBloc.stream.listen((state) {
       var isGroupStoredLocally = false;
 
-      Function launchMainPage = () {
-        _launchPage(navigatePagesBloc, LaunchMainPage());
-      };
-
-      if (state is NavigatePagesInitial) {
-        _bindOnWindowCloseToBlocs(
-            [navigatePagesBloc, welcomeBloc, mainBloc, settingsBloc]);
-        _bindNavBarSwitches(
-            mainSwitchFunction: launchMainPage,
-            settingsSwitchFunction: () {
-              _launchPage(navigatePagesBloc, LaunchSettingsPage());
-            });
-
-        navigatePagesBloc.add(BindNavBarSwitchesToPages());
-      }
+      if (state is NavigatePagesInitial) {}
 
       if (state is NavBarSwitchesBinded) {
         navigatePagesBloc.add(CheckGroupIdPresence());
@@ -69,33 +76,30 @@ class InitializeApp {
       }
 
       if (state is WelcomePageLaunched) {
-        final welcomePage = WelcomePage(launchMainPage);
+        final welcomePage = WelcomePage(_launchMainPage);
 
         welcomeBloc.add(WelcomeComponentInit());
         welcomePage.listen(welcomeBloc);
       }
 
       if (state is MainPageLaunched) {
-        final mainPage = MainPage();
         final navBar = document.querySelector('nav');
 
         navBar?.hidden = false;
 
         mainBloc.add(ObserveTimetablesInit());
-        mainPage.listen(mainBloc);
       }
 
       if (state is SettingsPageLaunched) {
-        final settingsPage = SettingsPage();
-
+        settingsPage.render();
         settingsBloc.add(WelcomeComponentInit());
         settingsPage.listen(settingsBloc);
       }
     });
   }
 
-  void _launchPage(Bloc bloc, NavigatePagesEvent launchEvent) {
-    bloc.add(launchEvent);
+  void _launchMainPage() {
+    navigatePagesBloc.add(LaunchMainPage());
   }
 
   void _bindOnWindowCloseToBlocs(List<Bloc> blocs) {
@@ -113,19 +117,35 @@ class InitializeApp {
     final mainSwitch = document.querySelector('#main-page-switch');
     final settingsSwitch = document.querySelector('#settings-page-switch');
 
-    print(mainSwitch?.id);
-    print(settingsSwitch?.id);
-
     if (mainSwitchFunction != null) {
       mainSwitch?.addEventListener('click', (event) {
+        event.preventDefault();
+        checkNavBarRadioButton(NavBarRadioButton.main);
         mainSwitchFunction();
       });
     }
 
     if (settingsSwitchFunction != null) {
       settingsSwitch?.addEventListener('click', (event) {
+        event.preventDefault();
+        checkNavBarRadioButton(NavBarRadioButton.settings);
         settingsSwitchFunction();
       });
     }
+  }
+}
+
+void checkNavBarRadioButton(NavBarRadioButton navBarRadioButton) {
+  final mainRadioButton = document.querySelector('#main-page-switch > input[type="radio"]');
+  final settingsRadioButton = document.querySelector('#settings-page-switch > input[type="radio"]');
+
+  if (navBarRadioButton == NavBarRadioButton.main) {
+    (mainRadioButton as RadioButtonInputElement).checked = true;
+    (settingsRadioButton as RadioButtonInputElement).checked = false;
+  }
+
+  if (navBarRadioButton == NavBarRadioButton.settings) {
+    (mainRadioButton as RadioButtonInputElement).checked = false;
+    (settingsRadioButton as RadioButtonInputElement).checked = true;
   }
 }

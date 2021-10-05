@@ -23,10 +23,6 @@ import 'group_selector_base_page.dart';
 import 'dart:html';
 
 class SettingsPage extends GroupSelectorBasePage implements PageContract {
-  SettingsPage() {
-    render();
-  }
-
   static const confirmGroupClearMessage =
       'После удаления группы, приложение будет перезапущено. Продолжить?';
   static const mainSectionId = 'settings-main-section';
