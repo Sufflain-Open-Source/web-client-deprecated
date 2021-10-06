@@ -15,13 +15,39 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:web_client/app/init.dart';
+import 'dart:html';
+
+import 'package:firebase/firebase.dart';
+import 'package:web_client/app/auth.dart';
+import 'package:web_client/remote_database_config.dart' as config;
+import 'package:web_client/app/app.dart';
 import 'package:web_client/core/use_cases/navigate_pages/navigate_pages_bloc.dart';
 
 void main() {
-  final navigatePagesBloc = NavigatePagesBloc();
-  final initApp = InitializeApp(navigatePagesBloc);
+  late final firebaseApp;
+  late final authenticator;
 
-  navigatePagesBloc.add(Init());
-  initApp.listen();
+  var errorMessageElement = '';
+
+  firebaseApp = initializeApp(
+      apiKey: config.apiKey,
+      authDomain: config.authDomain,
+      databaseURL: config.databaseURL,
+      projectId: config.projectId,
+      storageBucket: config.storageBucket);
+
+  authenticator = Authenticator(firebaseApp);
+  errorMessageElement = authenticator.anonymousSignIn();
+
+  if (errorMessageElement == '') {
+    final navigatePagesBloc = NavigatePagesBloc();
+    final initApp = InitializeApp(navigatePagesBloc);
+
+    navigatePagesBloc.add(Init());
+    initApp.listen();
+  }
+
+  if (errorMessageElement != '') {
+    document.querySelector('#root')?.innerHtml = errorMessageElement;
+  }
 }
