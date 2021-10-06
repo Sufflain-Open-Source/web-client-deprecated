@@ -26,13 +26,6 @@ import 'dart:async';
 
 class RemoteDatabase implements RemoteDatabaseContract {
   RemoteDatabase([Database? db]) {
-    initializeApp(
-        apiKey: config.apiKey,
-        authDomain: config.authDomain,
-        databaseURL: config.databaseURL,
-        projectId: config.projectId,
-        storageBucket: config.storageBucket);
-
     _realtimeDatabase = db ?? database();
   }
 

@@ -15,13 +15,49 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import 'package:web_client/app/init.dart';
+import 'dart:html';
+
+import 'package:firebase/firebase.dart';
+import 'package:web_client/app/auth.dart';
+import 'package:web_client/remote_database_config.dart' as config;
+import 'package:web_client/app/app.dart';
 import 'package:web_client/core/use_cases/navigate_pages/navigate_pages_bloc.dart';
+import 'package:web_client/ui/components/error_message.dart';
 
 void main() {
-  final navigatePagesBloc = NavigatePagesBloc();
-  final initApp = InitializeApp(navigatePagesBloc);
+  final appInitErrorMessage = 'Произошла ошибка при инициализации приложения';
+  late final firebaseApp;
+  late final authenticator;
 
-  navigatePagesBloc.add(Init());
-  initApp.listen();
+  var errorMessageElement = '';
+
+  try {
+    firebaseApp = initializeApp(
+        apiKey: '',
+        authDomain: config.authDomain,
+        databaseURL: config.databaseURL,
+        projectId: config.projectId,
+        storageBucket: config.storageBucket);
+
+    authenticator = Authenticator(firebaseApp);
+    errorMessageElement = authenticator.anonymousSignIn();
+
+  } catch (e) {
+    print(appInitErrorMessage);
+    errorMessageElement =
+        makeMessage('error-message', 'app-init-error', appInitErrorMessage);
+  }
+
+  if (errorMessageElement == '') {
+    
+    final navigatePagesBloc = NavigatePagesBloc();
+    final initApp = InitializeApp(navigatePagesBloc);
+
+    navigatePagesBloc.add(Init());
+    initApp.listen();
+  }
+
+  if (errorMessageElement != '') {
+    document.querySelector('#root')?.innerHtml = errorMessageElement;
+  }
 }
