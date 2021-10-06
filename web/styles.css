@@ -64,7 +64,23 @@ main {
 }
 
 .error-message {
-  color: red;
+  color: red;  
+}
+
+.error-message#sign-in-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+.error-message#app-init-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
 }
 
 .loading-indicator {
@@ -543,6 +559,8 @@ tbody td p:not(:nth-child(1)) {
     padding: 21px 34.5px;
   }
 }
+
+
 
 /* Debug */
 /* *, *::before,*::after
