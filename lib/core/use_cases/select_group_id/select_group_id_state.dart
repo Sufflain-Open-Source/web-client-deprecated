@@ -28,7 +28,4 @@ class SelectGroupIdComponentLoaded extends SelectGroupIdState {
   final List<String> groups;
 }
 
-// TODO implement error handling
-class SelectGroupIdComponentNotLoaded extends SelectGroupIdState {}
-
 class SelectGroupIdComponentSelected extends SelectGroupIdState {}

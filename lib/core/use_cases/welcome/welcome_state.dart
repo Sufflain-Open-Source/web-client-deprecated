@@ -28,9 +28,6 @@ class WelcomeComponentLoaded extends WelcomeState {
   final List<String> groups;
 }
 
-// TODO implement error handling
-class WelcomeComponentNotLoaded extends WelcomeState {}
-
 class WelcomeComponentSelected extends WelcomeState {
   WelcomeComponentSelected(this.groupId);
 

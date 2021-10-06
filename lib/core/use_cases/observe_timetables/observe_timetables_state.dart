@@ -26,6 +26,3 @@ class ObserveTimetablesContentLoaded extends ObserveTimetablesState {
 
   final List<Timetable> timetables;
 }
-
-// TODO implement error handling
-class ObserveTimetablesContentNotLoaded extends ObserveTimetablesState {}

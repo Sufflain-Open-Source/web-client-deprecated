@@ -21,8 +21,6 @@ abstract class NavigatePagesEvent {}
 
 class Init extends NavigatePagesEvent {}
 
-class BindNavBarSwitchesToPages extends NavigatePagesEvent {}
-
 class CheckGroupIdPresence extends NavigatePagesEvent {}
 
 class LaunchWelcomePage extends NavigatePagesEvent {}

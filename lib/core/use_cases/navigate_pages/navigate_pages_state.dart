@@ -21,8 +21,6 @@ abstract class NavigatePagesState {}
 
 class NavigatePagesInitial extends NavigatePagesState {}
 
-class NavBarSwitchesBinded extends NavigatePagesState {}
-
 class GroupIdPresenceChecked extends NavigatePagesState {
   GroupIdPresenceChecked(this.isGroupStoredLocally);
 

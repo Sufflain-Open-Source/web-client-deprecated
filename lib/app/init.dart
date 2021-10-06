@@ -26,10 +26,7 @@ import '../ui/pages/welcome_page.dart';
 import 'dart:html';
 import 'package:bloc/bloc.dart';
 
-enum NavBarRadioButton {
-  main,
-  settings
-}
+enum NavBarRadioButton { main, settings }
 
 class InitializeApp {
   InitializeApp(this.navigatePagesBloc);
@@ -54,14 +51,10 @@ class InitializeApp {
           navigatePagesBloc.add(LaunchSettingsPage());
         });
 
-    navigatePagesBloc.add(BindNavBarSwitchesToPages());
-
     navigatePagesBloc.stream.listen((state) {
       var isGroupStoredLocally = false;
 
-      if (state is NavigatePagesInitial) {}
-
-      if (state is NavBarSwitchesBinded) {
+      if (state is NavigatePagesInitial) {
         navigatePagesBloc.add(CheckGroupIdPresence());
       }
 
@@ -136,16 +129,21 @@ class InitializeApp {
 }
 
 void checkNavBarRadioButton(NavBarRadioButton navBarRadioButton) {
-  final mainRadioButton = document.querySelector('#main-page-switch > input[type="radio"]');
-  final settingsRadioButton = document.querySelector('#settings-page-switch > input[type="radio"]');
+  final radioButtonSelector = 'input[type="radio"]';
+  final mainRadioButton =
+      document.querySelector('#main-page-switch > ' + radioButtonSelector)
+          as RadioButtonInputElement;
+  final settingsRadioButton =
+      document.querySelector('#settings-page-switch > ' + radioButtonSelector)
+          as RadioButtonInputElement;
 
   if (navBarRadioButton == NavBarRadioButton.main) {
-    (mainRadioButton as RadioButtonInputElement).checked = true;
-    (settingsRadioButton as RadioButtonInputElement).checked = false;
+    mainRadioButton.checked = true;
+    settingsRadioButton.checked = false;
   }
 
   if (navBarRadioButton == NavBarRadioButton.settings) {
-    (mainRadioButton as RadioButtonInputElement).checked = false;
-    (settingsRadioButton as RadioButtonInputElement).checked = true;
+    mainRadioButton.checked = false;
+    settingsRadioButton.checked = true;
   }
 }

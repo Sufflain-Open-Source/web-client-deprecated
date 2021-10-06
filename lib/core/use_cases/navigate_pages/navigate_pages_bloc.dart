@@ -34,10 +34,6 @@ class NavigatePagesBloc extends Bloc<NavigatePagesEvent, NavigatePagesState> {
       yield NavigatePagesInitial();
     }
 
-    if (event is BindNavBarSwitchesToPages) {
-      yield NavBarSwitchesBinded();
-    }
-
     if (event is CheckGroupIdPresence) {
       final repo = Repository.instance;
       var isGroupStored = false;
