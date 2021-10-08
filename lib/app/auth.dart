@@ -16,7 +16,6 @@ class Authenticator {
     try {
       auth.signInAnonymously();
     } catch (e) {
-      print(cannotSignInErrorMessage);
       errorMessageElement = makeMessage(
           'error-message', 'sign-in-error', cannotSignInErrorMessage);
     }
