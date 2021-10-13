@@ -23,9 +23,9 @@ import 'package:web_client/remote_database_config.dart' as config;
 import 'package:web_client/app/app.dart';
 import 'package:web_client/core/use_cases/navigate_pages/navigate_pages_bloc.dart';
 
-void main() {
-  late final firebaseApp;
-  late final authenticator;
+void main() async {
+  final App firebaseApp;
+  final Authenticator authenticator;
 
   var errorMessageElement = '';
 
@@ -37,7 +37,7 @@ void main() {
       storageBucket: config.storageBucket);
 
   authenticator = Authenticator(firebaseApp);
-  errorMessageElement = authenticator.anonymousSignIn();
+  errorMessageElement = await authenticator.anonymousSignIn();
 
   if (errorMessageElement == '') {
     final navigatePagesBloc = NavigatePagesBloc();

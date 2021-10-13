@@ -10,11 +10,11 @@ class Authenticator {
   final App app;
   late final Auth auth = app.auth();
 
-  String anonymousSignIn() {
+  Future<String> anonymousSignIn() async {
     var errorMessageElement = '';
 
     try {
-      auth.signInAnonymously();
+      await auth.signInAnonymously();
     } catch (e) {
       errorMessageElement = makeMessage(
           'error-message', 'sign-in-error', cannotSignInErrorMessage);
