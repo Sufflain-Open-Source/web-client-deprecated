@@ -80,7 +80,12 @@ class MainPage implements PageContract {
     List cards = <String>[];
 
     for (var i = 0; i < _timetables.length; i++) {
-      cards.add(card_element.makeCard(i.toString(), _timetables[i].linkTitle));
+      final timetable = _timetables[i];
+      final lessons = timetable.lessons;
+
+      if (lessons.isNotEmpty) {
+        cards.add(card_element.makeCard(i.toString(), timetable.linkTitle));
+      }
     }
 
     return cards.join();
