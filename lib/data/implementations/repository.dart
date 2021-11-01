@@ -37,9 +37,6 @@ class Repository implements RepositoryContract {
 
   static Repository get instance => _instance ??= Repository._();
 
-  // @override
-  // Stream<List<TimetableModel>> getTimetablesChangesStream(String groupId) =>
-  //     _remoteDatabase.getTimetablesChangesStream(groupId);
   @override
   Future<List<Timetable>> getTimetables(String groupId) =>
       _remoteDatabase.getTimetables(groupId);

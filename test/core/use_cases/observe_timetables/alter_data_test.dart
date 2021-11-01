@@ -1,6 +1,5 @@
 import 'package:test/test.dart';
 import 'package:web_client/core/entities/timetable.dart';
-import 'package:web_client/core/use_cases/observe_timetables/observe_timetables_bloc.dart';
 import 'package:web_client/core/use_cases/observe_timetables/alter_data.dart';
 
 void main() {
