@@ -24,7 +24,7 @@ import 'dart:html';
 
 class SettingsPage extends GroupSelectorBasePage implements PageContract {
   static const confirmGroupClearMessage =
-      'После удаления группы, приложение будет перезапущено. Продолжить?';
+      'Удаление группы требует перезапуска приложения. Продолжить?';
   static const mainSectionId = 'settings-main-section';
   static const mainSectionTitleId = 'settings-main-section-title';
   static const mainSectionTitle = 'Основные';
