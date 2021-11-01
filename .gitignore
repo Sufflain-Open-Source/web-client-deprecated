@@ -7,4 +7,4 @@
 build/
 
 # Source files
-remote_database_config.dart
+lib/remote_database_config.dart
