@@ -47,3 +47,8 @@ or
 ## Commit Message Guidelines
 We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to format our commit
 messages.
+
+## Libraries
+- [firebase](https://pub.dev/packages/firebase) - Copyright (c) 2016, Google
+- [equatable](https://pub.dev/packages/equatable) - Copyright (c) 2018 Felix Angelov
+- [bloc](https://pub.dev/packages/bloc) - Copyright (c) 2018 Felix Angelov
