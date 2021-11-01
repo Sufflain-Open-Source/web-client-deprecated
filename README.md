@@ -2,6 +2,11 @@
 
 Licensed under the GNU AGPLv3. For more, read the [LICENSE](./LICENSE) file.
 
+Images are licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4**. For more, read the [LICENSE](img/LICENSE.md) file.
+
+## Demo
+You can view the [screenshots](demo.md).
+
 ## Project configuration
 1. Copy the program's config file from the [template](./template) directory to [lib](./lib).
 2. Fill it with necessary data.
