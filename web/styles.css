@@ -34,20 +34,29 @@
   --medium-blue: #c6f5fe;
   --dark-blue: #84cfff;
 
-  --nav-bar-height: 50px;
+  --nav-bar-height: 2.8rem;
 
-  --welcome-section-margin-top: 100px;
+  --welcome-section-margin-top: 5.6rem;
 
   --default-shadow-down: 0 3px 6px #00000029;
   --default-shadow-up: 0 -3px 6px #00000029;
 
-  --table-margin-vertical: 49px;
-  --table-margin-horizontal: 40px;
+  --table-margin-vertical: 2.72rem;
+  --table-margin-horizontal: 2.2rem;
+
+  --default-font-size: 18px;
+
+  --deafult-group-selector-width: 16.3rem;
+  --deafult-group-selector-height: 3.3rem;
+}
+
+html {
+  font-size: var(--default-font-size);
+  height: calc(100% + var(--nav-bar-height));
 }
 
 html, body {
   width: 100%;
-  height: calc(100% + var(--nav-bar-height));
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
@@ -60,7 +69,9 @@ body {
 
 main {
   width: 100%;
-  height: 100%;
+  height: auto;
+  margin-bottom: calc(var(--nav-bar-height) * 2);
+  display: grid;
 }
 
 .error-message {
@@ -105,7 +116,7 @@ input[type="radio"]:checked+label {
 label {
   padding-bottom: 3px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 nav:not([hidden=""]) {
@@ -176,12 +187,9 @@ nav:not([hidden=""]) {
 /*################
   # Welcome page #
   ################*/
-
-#welcome-section {
-  margin: auto 34px;
-  margin-bottom: 100px;
+div#welcome-content {
   display: grid;
-  grid-template-columns: auto auto;
+  place-items: center;
 }
 
 #welcome-text {
@@ -190,14 +198,14 @@ nav:not([hidden=""]) {
 
 #title {
   color: #FE4466;
-  font-size: 32px;
+  font-size: 1.8rem;
   font-weight: 700;
   max-width: 100%;
 }
   
 #note {
   color: #773C62;
-  font-size: 17px;
+  font-size: 1rem;
   max-width: 100%;
   padding-top: 10px;
 }
@@ -207,36 +215,23 @@ nav:not([hidden=""]) {
   white-space: pre;
 }
 
-#logo {
-  background-image: url(img/sufflain-colored-outline.svg);
-  width: 61.38px;
-  height: 99px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-top: calc(var(--welcome-section-margin-top) - 10px);
-}
-
-#select-group-section {
-  display: grid;
-  justify-content: center;
-  position: relative;
-}
-
 #groupSelectorPlaceholder {
   display: inline-block;
   position: relative;
-  width: 187px;
+  width: var(--deafult-group-selector-width);
 }
 
 #groups {
-  padding-left: 60px; /* Center text (works in Safari). */
-  width: 187px;
-  height: 51px;
+  padding-left: calc(var(--deafult-group-selector-width) / 3); /* Center text (works in Safari). */
+  width: var(--deafult-group-selector-width);
+  height: var(--deafult-group-selector-height);
   background-color: var(--light-blue);
   color: var(--dark-red);
   border: none;
   box-shadow: var(--default-shadow-down);
-  font-size: 15px;
+  font-size: 1rem;
+  margin-top: 4rem;
+  position: relative;
  }
 
 #groups:focus {
@@ -249,8 +244,8 @@ nav:not([hidden=""]) {
 
 .custom-arrow {
   position: absolute;
-  top: 45%;
-  right: 0.5rem;
+  bottom: 1.2rem;
+  right: 1rem;
   width: 0;
   height: 0;
   pointer-events: none;
@@ -274,15 +269,14 @@ button:not(:disabled):hover {
 
 #submitButton {
   background-color: var(--medium-red);
-  width: 98px;
-  height: 40px;
+  width: 16.3rem;
+  height: 3.3rem;
   border-radius: 10px;
   color: var(--medium-blue);
   background-color: var(--medium-red);
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 14px;
+  position: initial;
+  font-size: 1rem;
+  margin-top: 2rem;
 }
 
 #submitButton:not(:disabled):hover {
@@ -298,41 +292,6 @@ button:not(:disabled):hover {
 #submitButton:disabled {
   background-color: var(--light-red);
   cursor: default;
-}
-
-@media (min-width: 600px) {
-  #welcome-section {
-    display: grid;
-    grid-template-columns: 200px auto;
-    position: relative;
-    margin-bottom: 50px;
-  }
-
-  #logo {
-    position: relative;
-    bottom: -50%;
-    width: 154.945px;
-    height: 250px;
-    margin-left: 34px;
-  }
-
-  #welcome-text {
-    position: absolute;
-    left: 50%;
-    bottom: 25%;
-  }
-
-  #select-group-section {
-    position: absolute;    
-    left: 50%;
-    margin: 0;
-  }
-
-  #submitButton {
-    position: relative;
-    bottom: -100px;
-    transform: none;
-  }
 }
 
 /*############# 
@@ -357,7 +316,7 @@ div.card:hover {
 }
 
 p.card-title {
-  font-size: 15px;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--dark-red);
   text-align: center;
@@ -369,7 +328,7 @@ p.card-title {
   top: 50%;
   left: 50%;  
   transform: translate(-50%, -50%);
-  font-size: 17px;
+  font-size: 1rem;
   color: var(--dark-red);
 }
 
@@ -387,7 +346,7 @@ p.card-title {
 
 p#settings-main-section-title {
   color: var(--dark-red);
-  font-size: 15px;
+  font-size: 1.3rem;
   font-weight: 700;
   margin: auto 40px;
   margin-top: 42px;
@@ -401,21 +360,26 @@ div#settings-main-section {
 }
 
 p#group-selector-label {
-  margin-top: 27px;
-  margin-bottom: 8px;
-  font-size: 12px;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
   color: var(--dark-red);
 }
 
 div#copyright-section {
-  text-align: center;
-  font-size: 10px;
-  color: var(--dark-red);
+  width: 100%;
+  display: grid;
+  place-items: center;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   bottom: 80px;
   z-index: -1;
+}
+
+div#copyright-content {  
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  color: var(--dark-red);
 }
 
 @media (min-width: 600px) {
@@ -428,18 +392,28 @@ div#copyright-section {
   }
 }
 
+@media (max-width: 600px) {
+  #groupSelectorPlaceholder.minified-selector-placeholder, div.minified-selector-placeholder > select#groups {
+    width: calc(var(--deafult-group-selector-width) / 1.5);
+  }
+
+  div.minified-selector-placeholder > select#groups {    
+    padding-left: calc(var(--deafult-group-selector-width) / 6);
+  }
+}
+
 button#clear-group {
-  position: absolute;
-  left: 210px;
-  bottom: 10.25px;
-  padding: 5px;
-  border-radius: 10px;
+  position: initial;
+  margin-left: 1rem;
+  border-radius: 1rem;
   background-color: var(--medium-red);
   color: var(--light-blue);
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
-  font-size: 15px;
+  font-size: 1rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 button#clear-group:active {
@@ -451,7 +425,7 @@ button#clear-group:active {
   ##################*/
 
 p#link-title {
-  font-size: 15px;
+  font-size: 1.3rem;
   margin: auto 40px;
   margin-top: 42px;
   padding-bottom: 6px;
@@ -464,7 +438,7 @@ p#link-title {
 
 p#timetable-title {
   color: var(--light-red);
-  font-size: 15px;
+  font-size: 1rem;
   margin-top: 25px;
   text-align: center;
 }
@@ -507,14 +481,14 @@ table tr td:nth-child(1) {
 }
 
 td#time {
-  font-size: 15px;
+  font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
   color: var(--dark-red);
 }
 
 td#info {
-  font-size: 15px;
+  font-size: 1.3rem;
   font-weight: 700;
   text-align: center;
   color: var(--dark-red);

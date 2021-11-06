@@ -65,17 +65,19 @@ class WelcomePage extends GroupSelectorBasePage implements PageContract {
   void render() {
     final rootElement = document.querySelector('#root');
     final pageContent = '''
-    <div id="welcome-section">
-      <div id="welcome-text">
-        <h1 id="$titleId">$title</h1>
-        <div id="$noteId">$note</div>
+    <div id="welcome-content">
+      <div id="welcome-section">
+        <div id="welcome-text">
+          <h1 id="$titleId">$title</h1>
+          <div id="$noteId">$note</div>
+        </div>
+        <div id="$logoId"></div>
       </div>
-      <div id="$logoId"></div>
+      <div id="$selectSection">
+        <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
+      </div>
+      <button id="$submitButtonId" disabled >$submitButtonText</button>
     </div>
-    <div id="$selectSection">
-      <div id="${GroupSelectorBasePage.selectorPlaceholderId}"></div>
-    </div>
-    <button id="$submitButtonId" disabled >$submitButtonText</button>
     ''';
 
     rootElement?.innerHtml = pageContent;
