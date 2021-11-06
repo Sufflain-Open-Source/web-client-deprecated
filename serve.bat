@@ -6,4 +6,4 @@ if "%PORT%" == "" (
     set PORT=8080
 )
 
-webdev serve web:%PORT%
+dart pub global run webdev serve web:%PORT%

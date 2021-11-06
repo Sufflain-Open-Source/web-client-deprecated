@@ -1,3 +1,3 @@
 @echo off
 
-webdev build -o web:build
+dart pub global run webdev build -o web:build
