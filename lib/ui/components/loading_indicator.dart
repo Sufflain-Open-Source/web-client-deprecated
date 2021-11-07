@@ -16,5 +16,8 @@
 */
 
 String makeLoadingIndicator() {
-  return '<div class="loading-indicator"></div>';
+  return '''
+  <div class="loading-indicator-container">
+    <div class="loading-indicator"></div>
+  </div''';
 }
