@@ -543,6 +543,13 @@ tbody td p:not(:nth-child(1)) {
   margin-top: 6px;
 }
 
+@media (max-width: 600px) {
+  div.timetable-container {
+    display: grid;
+    place-items: center;
+  }
+}
+
 /* For smaller mobile screens. */
 @media (max-width: 416px) {
   table {
