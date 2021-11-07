@@ -96,12 +96,24 @@ main#root > div.loading-indicator-container {
   height: calc(100vh - calc(var(--nav-bar-height) * 2));
 }
 
-.loading-indicator {
+.loading-indicator {  
   background-image: url(img/loading.svg);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 32px;
-  height: 32px;
+  background-position: center;
+  width: 2rem;
+  height: 2rem;  
+  animation: spin 0.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #output {
