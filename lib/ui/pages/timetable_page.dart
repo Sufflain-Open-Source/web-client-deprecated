@@ -40,7 +40,7 @@ class TimetablePage implements PageContract {
   void render() {
     final rootElement = document.querySelector('#root');
     final pageContent = '''
-    <div>
+    <div class="timetable-container">
       <p id="$linkTitleId">${timetable.linkTitle}</p>
       <p id="$titleId">${timetable.title}</p>
       <table border=1>

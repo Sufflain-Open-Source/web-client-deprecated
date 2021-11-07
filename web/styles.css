@@ -64,12 +64,11 @@ html, body {
 
 body {
   background-color: #C6F5FE;
-  padding-bottom: 50px;
 }
 
-main {
+main#root {
   width: 100%;
-  height: auto;
+  margin-top: 0;
   margin-bottom: calc(var(--nav-bar-height) * 2);
   display: grid;
 }
@@ -318,7 +317,11 @@ div.card {
 }
 
 div.card:first-of-type {
-  margin-top: 100px;
+  margin-top: 5.6rem;
+}
+
+div.card:last-of-type {
+  margin-bottom: calc(var(--nav-bar-height) * 4);
 }
 
 div.card:hover {
@@ -358,8 +361,7 @@ p#settings-main-section-title {
   color: var(--dark-red);
   font-size: 1.3rem;
   font-weight: 700;
-  margin: auto 40px;
-  margin-top: 42px;
+  margin: auto 2.2rem;
   border-bottom: solid var(--dark-red);
   border-width: 1px;
 }
@@ -410,6 +412,10 @@ div#copyright-content {
   div.minified-selector-placeholder > select#groups {    
     padding-left: calc(var(--deafult-group-selector-width) / 6);
   }
+  
+  p#settings-main-section-title {
+    margin-top: 2.2rem;
+  }
 }
 
 button#clear-group {
@@ -433,6 +439,9 @@ button#clear-group:active {
 /*################## 
   # Timetable page #
   ##################*/
+div.timetable-container {
+  margin-bottom: calc(var(--nav-bar-height) * 2);
+}
 
 p#link-title {
   font-size: 1.3rem;
@@ -449,12 +458,12 @@ p#link-title {
 p#timetable-title {
   color: var(--light-red);
   font-size: 1rem;
-  margin-top: 25px;
+  margin-top: 1.4rem;
+  margin-bottom: 1.4rem;
   text-align: center;
 }
 
-table {
-  margin: var(--table-margin-vertical) var(--table-margin-horizontal);
+table {  
   border-collapse: collapse;
   border: 0;
 }
@@ -536,7 +545,12 @@ tbody td p:not(:nth-child(1)) {
   }
 }
 
-
+/* For larger screens. */
+@media (min-width: 601px) {
+  p#settings-main-section-title, p#link-title {  
+    margin-top: calc(2.3rem + calc(var(--nav-bar-height) * 2));
+  }
+}
 
 /* Debug */
 /* *, *::before,*::after
