@@ -44,7 +44,7 @@
   --table-margin-vertical: 2.72rem;
   --table-margin-horizontal: 2.2rem;
 
-  --default-font-size: 18px;
+  --default-font-size: 16px;
 
   --deafult-group-selector-width: 16.3rem;
   --deafult-group-selector-height: 3.3rem;
@@ -53,6 +53,7 @@
 html {
   font-size: var(--default-font-size);
   height: 100vh;
+  font-family: Roboto;
 }
 
 html, body {
@@ -219,7 +220,7 @@ div#welcome-content {
 
 #title {
   color: #FE4466;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   max-width: 100%;
 }
@@ -341,7 +342,7 @@ div.card:hover {
 }
 
 p.card-title {
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--dark-red);
   text-align: center;
@@ -371,7 +372,7 @@ p.card-title {
 
 p#settings-main-section-title {
   color: var(--dark-red);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   margin: auto 2.2rem;
   border-bottom: solid var(--dark-red);
