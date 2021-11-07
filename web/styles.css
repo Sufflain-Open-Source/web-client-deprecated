@@ -458,7 +458,7 @@ div.timetable-container {
 
 p#link-title {
   font-size: 1.3rem;
-  margin: auto 40px;
+  margin: auto 2.5rem;
   margin-top: 42px;
   padding-bottom: 6px;
   text-align: center;
@@ -562,6 +562,10 @@ tbody td p:not(:nth-child(1)) {
 @media (min-width: 601px) {
   p#settings-main-section-title, p#link-title {  
     margin-top: calc(2.3rem + calc(var(--nav-bar-height) * 2));
+  }
+
+  table {
+    margin-left: 2.5rem;
   }
 }
 
