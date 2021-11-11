@@ -11,6 +11,14 @@ You can view the [screenshots](demo.md).
 1. Copy the program's config file from the [template](./template) directory to [lib](./lib).
 2. Fill it with necessary data.
 
+## Install the webdev tool
+You will build the app using the [webdev](https://pub.dev/packages/webdev) tool.
+
+```bash
+dart pub global activate webdev
+```
+
+
 ## Build
 1. Get the dependencies:
 ```bash
@@ -29,14 +37,8 @@ or
 ```
 
 ## Serve (optional)
-If you want to run it using the [webdev](https://pub.dev/packages/webdev) tool.
 
-1. Install the *webdev* tool:
-```bash
-dart pub global activate webdev
-```
-
-2. Use a script for your system:
+Use a script for your system:
 ```powershell
 .\serve.bat [port]
 ```
@@ -47,7 +49,7 @@ or
 ./serve.sh [port]
 ```
 
-"[port]" is an optional TCP port number of the web server.
+`[port]` is an optional TCP port number of the web server.
 
 ## Commit Message Guidelines
 We use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to format our commit
