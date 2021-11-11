@@ -478,6 +478,7 @@ p#timetable-title {
 table {  
   border-collapse: collapse;
   border: 0;
+  margin: var(--table-margin-vertical) var(--table-margin-horizontal);
 }
 
 table thead tr td:first-child {
@@ -568,10 +569,6 @@ tbody td p:not(:nth-child(1)) {
 @media (min-width: 601px) {
   p#settings-main-section-title, p#link-title {  
     margin-top: calc(2.3rem + calc(var(--nav-bar-height) * 2));
-  }
-
-  table {
-    margin-left: 2.5rem;
   }
 }
 
