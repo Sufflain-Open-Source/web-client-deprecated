@@ -32,10 +32,28 @@ class RemoteDatabase implements RemoteDatabaseContract {
   late final Database _realtimeDatabase;
 
   @override
+  Future<Map<String, int>> getTimetablesOrder() async {
+    final timetablesOrderReference =
+        _realtimeDatabase.ref(config.timetablesOrderNodeName);
+    final Map<String, int> timetablesOrder;
+
+    try {
+      timetablesOrder = await timetablesOrderReference
+          .once('value')
+          .then((event) => Map.from(event.snapshot.val()));
+    } catch (e) {
+      return {};
+    }
+
+    return timetablesOrder;
+  }
+
+  @override
   Future<List<Timetable>> getTimetables(String groupId) async {
     final timetablesReference =
         _realtimeDatabase.ref(config.timetablesNodeName).child(groupId);
     final Map<String, dynamic> timetablesJson;
+    var timetables = <Timetable>[];
 
     try {
       timetablesJson = await timetablesReference
@@ -49,11 +67,11 @@ class RemoteDatabase implements RemoteDatabaseContract {
       return [];
     }
 
-    final timetablesJsonValues = timetablesJson.values.toList();
+    timetablesJson.forEach((key, value) {
+      timetables.add(TimetableModel.fromJson(key, value));
+    });
 
-    return timetablesJsonValues
-        .map((value) => TimetableModel.fromJson(value))
-        .toList();
+    return timetables;
   }
 
   @override
@@ -62,10 +80,10 @@ class RemoteDatabase implements RemoteDatabaseContract {
     final groups;
 
     try {
-    groups = await groupsReference
-        .once('value')
-        .then((event) => event.snapshot.val());
-    } catch(e) {
+      groups = await groupsReference
+          .once('value')
+          .then((event) => event.snapshot.val());
+    } catch (e) {
       return [];
     }
 

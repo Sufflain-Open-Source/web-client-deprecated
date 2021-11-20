@@ -20,14 +20,12 @@ import '../../core/entities/timetable.dart';
 
 class TimetableModel extends Timetable {
   TimetableModel(
-      {required title, required linkTitle, required lessons, required order})
-      : super(
-            title: title, linkTitle: linkTitle, lessons: lessons, order: order);
+      {required title, required linkTitle, required lessons, required hash})
+      : super(title: title, linkTitle: linkTitle, lessons: lessons, hash: hash);
 
-  factory TimetableModel.fromJson(Map<String, dynamic> json) {
+  factory TimetableModel.fromJson(String hash, Map<String, dynamic> json) {
     final String title = json['title'];
     final String linkTitle = json['linkTitle'];
-    final int order = json['postOrder'];
     final lessonsJson = json.containsKey('lessons')
         ? List<Map<String, dynamic>>.from(json['lessons'])
         : [];
@@ -36,6 +34,6 @@ class TimetableModel extends Timetable {
         : lessonsJson.map((element) => LessonModel.fromJson(element)).toList();
 
     return TimetableModel(
-        title: title, linkTitle: linkTitle, lessons: lessons, order: order);
+        title: title, linkTitle: linkTitle, lessons: lessons, hash: hash);
   }
 }

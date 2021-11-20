@@ -8,3 +8,4 @@ const appId = '';
 const measurementId = '';
 const groupsNodeName = '';
 const timetablesNodeName = '';
+const timetablesOrderNodeName = '';

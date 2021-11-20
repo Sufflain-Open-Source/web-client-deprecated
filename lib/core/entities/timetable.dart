@@ -23,20 +23,20 @@ import 'lesson.dart';
 ///
 /// [title] contains a timetable title with a group id.
 /// [linkTitle] contains a text that will allow a user to locate a timetable and open it.
-/// [order] contains a number that helps to identify which
+/// [hash] contains a timetable hash that helps to identify which
 /// timetable was added earlier than others.
 class Timetable extends Equatable {
   Timetable(
       {required this.title,
       required this.linkTitle,
       required this.lessons,
-      required this.order});
+      required this.hash});
 
-  final int order;
+  final String hash;
   final String title;
   final String linkTitle;
   final List<Lesson> lessons;
 
   @override
-  List<Object?> get props => [title, linkTitle, lessons, order];
+  List<Object?> get props => [title, linkTitle, lessons, hash];
 }

@@ -20,4 +20,5 @@ import '../entities/timetable.dart';
 abstract class RemoteDatabaseContract {
   Future<List<String>> getGroups();
   Future<List<Timetable>> getTimetables(String groupId);
+  Future<Map<String, int>> getTimetablesOrder();
 }
