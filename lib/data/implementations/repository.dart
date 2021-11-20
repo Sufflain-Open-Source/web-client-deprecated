@@ -55,4 +55,7 @@ class Repository implements RepositoryContract {
 
   @override
   Future<List<String>> getGroups() => _remoteDatabase.getGroups();
+
+  @override
+  Future<Map<String, int>> getTimetablesOrder() => _remoteDatabase.getTimetablesOrder();
 }

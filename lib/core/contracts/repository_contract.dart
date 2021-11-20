@@ -29,4 +29,6 @@ abstract class RepositoryContract {
   void clearGroupId();
 
   Future<List<String>> getGroups();
+
+  Future<Map<String, int>> getTimetablesOrder();
 }

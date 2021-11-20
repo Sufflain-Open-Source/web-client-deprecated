@@ -40,7 +40,8 @@ class ObserveTimetablesBloc
 
     if (event is ObserveTimetablesLoadContent) {
       final timetables = await repo.getTimetables(repo.groupId);
-      final timetalbesSorted = sortTimetablesByTimePosted(timetables);
+      final timetablesOrder = await repo.getTimetablesOrder();
+      final timetalbesSorted = sortTimetablesByTimePosted(timetables, timetablesOrder);
 
       yield ObserveTimetablesContentLoaded(timetalbesSorted);
     }
