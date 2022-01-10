@@ -45,8 +45,9 @@ class MainPage implements PageContract {
 
       if (state is ObserveTimetablesContentLoaded) {
         _timetables = state.timetables;
+        final areAllLessonsEmpty = _timetables.every((timetable) => timetable.lessons.isEmpty);
 
-        if (_timetables.isEmpty) {
+        if (_timetables.isEmpty || areAllLessonsEmpty) {
           document.querySelector('#root')?.innerHtml =
               makeMessage('message', 'no-data', nothingToShowMessage);
         } else {
