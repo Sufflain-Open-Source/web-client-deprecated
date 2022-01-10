@@ -467,7 +467,11 @@ p#link-title {
   border-width: 1px;
 }
 
-p#timetable-title {
+strong {
+  all: unset;
+}
+
+p#timetable-title, strong {
   color: var(--light-red);
   font-size: 1rem;
   margin-top: 1.4rem;
