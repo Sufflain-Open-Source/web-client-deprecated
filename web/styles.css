@@ -359,7 +359,7 @@ p.card-title {
 
 @media (min-width: 600px) {
   div.card {
-    max-width: 480px;
+    width: 480px;
     margin-left: auto;
     margin-right: auto;
   }
