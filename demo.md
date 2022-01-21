@@ -10,7 +10,7 @@
 
 **Timetable page**
 
-![desktop timetable page](img/timetable-25-oct-edited.png)
+![desktop timetable page](img/timetable-21-jan-2022-edited.png)
 
 **Settings page**
 
@@ -31,7 +31,7 @@
 
 **Timetable page**
 
-![mobile timetable page](img/timetable-25-oct-mobile-edited.png)
+![mobile timetable page](img/timetable-21-jan-2022-mobile-edited.png)
 
 **Settings page**
 
