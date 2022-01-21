@@ -17,7 +17,6 @@
 
 import 'package:web_client/core/entities/timetable.dart';
 
-import '../models/timetable.dart';
 import '../../core/contracts/local_database_contract.dart';
 import '../../core/contracts/remote_database_contract.dart';
 import '../../core/contracts/repository_contract.dart';

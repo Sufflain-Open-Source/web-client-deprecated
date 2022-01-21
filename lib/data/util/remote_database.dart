@@ -89,8 +89,4 @@ class RemoteDatabase implements RemoteDatabaseContract {
 
     return groups == null ? <String>[] : List<String>.from(groups);
   }
-
-  /// Get a reference of the timetables for a specific [groupId] and listen for data changes
-  // Stream<QueryEvent> _getDataChangesStream(String groupId) =>
-  //     _realtimeDatabase.ref('t').child(groupId).onValue;
 }
